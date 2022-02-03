@@ -1,4 +1,4 @@
-package com.napier.sem;
+package com.SET08103.cw;
 
 public class App {
     public static void main(String[] args)
