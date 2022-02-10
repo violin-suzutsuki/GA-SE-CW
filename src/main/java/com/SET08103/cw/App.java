@@ -1,50 +1,65 @@
 package com.SET08103.cw;
 
-import com.mongodb.Block;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
+import java.sql.*;
 
 /**
  * App.java
  *
- * This is the program entrypoint, and connects to a MongoDB instance hosted on a VPS.
- * The MongoDB integration will soon redundant as we are moving to an SQL instance running in a local docker container
+ * This is the program entrypoint
  */
 public class App {
-    public static void main(String[] args)
-    {
-        MongoClientURI url = new MongoClientURI("mongodb+srv://administrator:1dy955HGnUDvj1gw@mongodb-geo-data.40ppl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-
-        MongoClient client;
-
-        try {
-            client = new MongoClient(url);
-        } catch (Exception e) {
-            System.out.println("Failed to connect to server.");
-            return;
+    public static void main(String[] args) {
+        try
+        {
+            // Load Database driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("Could not load SQL driver");
+            System.exit(-1);
         }
 
-        MongoDatabase database;
-
-        try {
-            database = client.getDatabase("Database");
-        } catch (Exception e) {
-            System.out.println("Failed to find database.");
-            return;
+        // Connection to the database
+        Connection con = null;
+        int retries = 100;
+        for (int i = 0; i < retries; ++i)
+        {
+            System.out.println("Connecting to database...");
+            try
+            {
+                // Wait a bit for db to start
+                Thread.sleep(30000);
+                // Connect to database
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
+                System.out.println("Successfully connected");
+                // Wait a bit
+                Thread.sleep(10000);
+                // Exit for loop
+                break;
+            }
+            catch (SQLException sqle)
+            {
+                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println(sqle.getMessage());
+            }
+            catch (InterruptedException ie)
+            {
+                System.out.println("Thread interrupted? Should not happen.");
+            }
         }
 
-        MongoCollection collection;
-
-        try {
-            collection = database.getCollection("GeoData");
-        } catch (Exception e) {
-            System.out.println("Failed to find collection.");
-            return;
+        if (con != null)
+        {
+            try
+            {
+                // Close connection
+                con.close();
+            }
+            catch (Exception e)
+            {
+                System.out.println("Error closing connection to database");
+            }
         }
-
-        System.out.println("Connected to MongoDB, found GeoData collection!");
     }
 }

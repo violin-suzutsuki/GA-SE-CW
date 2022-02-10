@@ -1,4 +1,4 @@
 FROM mysql
+COPY world.sql /docker-entrypoint-initdb.d
 WORKDIR /tmp
-COPY ./db/world.sql /docker-entrypoint-initdb.d
-ENV MYSQL_ROOT_PASSWORD password
+ENV MYSQL_ROOT_PASSWORD example
