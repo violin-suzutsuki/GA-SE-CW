@@ -12,7 +12,8 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'adopt'/compare
+            -
       - name: Compile with Maven
         run: mvn package
       - name: Build Docker Image
