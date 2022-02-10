@@ -7,6 +7,12 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+/**
+ * App.java
+ *
+ * This is the program entrypoint, and connects to a MongoDB instance hosted on a VPS.
+ * The MongoDB integration will soon redundant as we are moving to an SQL instance running in a local docker container
+ */
 public class App {
     public static void main(String[] args)
     {
