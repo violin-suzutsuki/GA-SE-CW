@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * App.java
  *
- * This is the program entrypoint
+ * This is the program entrypoint and contains code to connect to an SQL docker container.
  */
 public class App {
     public static void main(String[] args) {
