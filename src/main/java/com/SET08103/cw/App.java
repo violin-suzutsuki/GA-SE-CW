@@ -1,5 +1,7 @@
 package com.SET08103.cw;
 
+import com.SET08103.cw.data.DataHandler;
+
 import java.sql.*;
 
 /**
@@ -9,56 +11,19 @@ import java.sql.*;
  */
 public class App {
     public static void main(String[] args) {
-        try
+        System.out.println("[*] Establishing connection to SQL database...");
+
+        long Start = System.currentTimeMillis();
+
+        DataHandler dataHandler = new DataHandler();
+        boolean result = dataHandler.connect(100);
+
+        if (result == false)
         {
-            // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
+            System.out.println("[-] Failed to connect to the database.");
+            return;
         }
 
-        // Connection to the database
-        Connection con = null;
-        int retries = 100;
-        for (int i = 0; i < retries; ++i)
-        {
-            System.out.println("Connecting to database...");
-            try
-            {
-                // Connect to database
-                Thread.sleep(20000);
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
-                System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(5000);
-                // Exit for loop
-                break;
-            }
-            catch (SQLException sqle)
-            {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
-                System.out.println(sqle.getMessage());
-            }
-            catch (InterruptedException ie)
-            {
-                System.out.println("Thread interrupted? Should not happen.");
-            }
-        }
-
-        if (con != null)
-        {
-            try
-            {
-                // Close connection
-                con.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println("Error closing connection to database");
-            }
-        }
+        System.out.println(String.format("[+] Established connection to the database! Took %sms", System.currentTimeMillis() - Start));
     }
 }
