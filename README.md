@@ -1,4 +1,4 @@
-# SET08103
+# GA Software Engineering Coursework
 [![LICENSE](https://img.shields.io/github/license/violin-suzutsuki/SET08103.svg)](https://github.com/violin-suzutsuki/SET08103/blob/main/LICENSE)
 [![Releases](https://img.shields.io/github/release/violin-suzutsuki/SET08103.svg)](#)
 ![Codebase Size](https://img.shields.io/github/languages/code-size/violin-suzutsuki/SET08103)
