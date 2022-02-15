@@ -34,16 +34,15 @@ public class DataHandler {
                 Thread.sleep(1000);
                 connection = DriverManager.getConnection(CONNECTION_STRING, USER, PASSWORD);
             }
-            catch (SQLException e)
+            catch (SQLException | InterruptedException e)
             {
                 e.printStackTrace();
             }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
+
+            if (connection != null)
+                return true;
         }
 
-        return connection != null;
+        return false;
     }
 }
