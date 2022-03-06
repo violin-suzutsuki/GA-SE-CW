@@ -2,11 +2,19 @@ package com.SET08103.cw;
 
 import java.sql.*;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
- * App.java
+ * Application.java
  *
  * This is the program entrypoint and contains code to connect to an SQL docker container.
  */
+@SpringBootApplication
+@RestController
 public class App {
     public static void main(String[] args) {
         try
@@ -60,5 +68,7 @@ public class App {
                 System.out.println("Error closing connection to database");
             }
         }
+
+        SpringApplication.run(App.class, args);
     }
 }
