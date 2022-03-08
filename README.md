@@ -4,8 +4,8 @@
 ![Codebase Size](https://img.shields.io/github/languages/code-size/violin-suzutsuki/SET08103)
 
 #### Main Branch
-![workflow](https://img.shields.io/github/workflow/status/violin-suzutsuki/SET08103/A%20workflow%20for%20coursework/main)<br>
-![commit](https://img.shields.io/github/last-commit/violin-suzutsuki/SET08103/main)
+![workflow](https://img.shields.io/github/workflow/status/violin-suzutsuki/SET08103/A%20workflow%20for%20coursework/master)<br>
+![commit](https://img.shields.io/github/last-commit/violin-suzutsuki/SET08103/master)
 
 #### Release Branch
 ![workflow](https://img.shields.io/github/workflow/status/violin-suzutsuki/SET08103/A%20workflow%20for%20coursework/release)<br>

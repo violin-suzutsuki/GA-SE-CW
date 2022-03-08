@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  app:
+    build: .
+
+  db:
+    build: db/.
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+
