@@ -1,6 +1,9 @@
 package com.SET08103.cw;
 
 import com.SET08103.cw.data.DataHandler;
+import com.SET08103.cw.objects.Continent;
+import com.SET08103.cw.objects.Country;
+import com.SET08103.cw.objects.Region;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * App.java
  *
  * This is the program entrypoint and contains code to connect to an SQL docker container.
  */
-
 @SpringBootApplication
 @RestController
 public class App {
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
         System.out.println("[*] Establishing connection to SQL database...");
 
         long Start = System.currentTimeMillis();
@@ -43,6 +46,20 @@ public class App {
         else
         {
             SpringApplication.run(App.class, args);
+        }
+
+        dataHandler.loadContinents();
+
+        for (Continent continent : dataHandler.getContinents())
+        {
+            for (Region region : continent.getRegions())
+            {
+                for (Country country : region.getCountries())
+                {
+                    System.out.println(String.format("%s - %s: %s", continent.getName(), region.getName(), country.toString()));
+                }
+            }
+
         }
     }
 }
