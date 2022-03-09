@@ -56,6 +56,6 @@ public class Country
 
     public String toString()
     {
-        return String.format("Country: %s, code: %s, continent: %s, region: %s, capital city: [%s]", name, code, continent, region, capital == null ? "none" : capital.toString());
+        return String.format("%s (capital city: [%s])", name, capital == null ? "none" : capital.toString());
     }
 }

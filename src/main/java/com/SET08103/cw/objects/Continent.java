@@ -23,7 +23,7 @@ public class Continent {
     {
         for (Region region : regions)
         {
-            regions.add(region);
+            this.regions.add(region);
         }
     }
 

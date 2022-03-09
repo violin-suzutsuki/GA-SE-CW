@@ -1,7 +1,9 @@
 package com.SET08103.cw;
 
 import com.SET08103.cw.data.DataHandler;
+import com.SET08103.cw.objects.Continent;
 import com.SET08103.cw.objects.Country;
+import com.SET08103.cw.objects.Region;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,5 +33,16 @@ public class App
         System.out.println(String.format("[+] Established connection to the database! Took %sms", System.currentTimeMillis() - Start));
 
         dataHandler.loadContinents();
+
+        for (Continent continent : dataHandler.getContinents())
+        {
+            for (Region region : continent.getRegions())
+            {
+                for (Country country : region.getCountries())
+                {
+                    System.out.println(String.format("%s - %s: %s", continent.getName(), region.getName(), country.toString()));
+                }
+            }
+        }
     }
 }

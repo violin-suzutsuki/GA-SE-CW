@@ -51,7 +51,7 @@ public class DataHandler
             }
             catch (SQLException | InterruptedException e)
             {
-                e.printStackTrace();
+                System.out.println("[-] Unable to connect to SQL database, retrying...");
             }
 
             if (connection != null)
@@ -86,19 +86,47 @@ public class DataHandler
 
             ResultSet results = query.executeQuery();
 
-            results.next();
+            if (results.next()) {
+                City city = new City(
+                        results.getInt("ID"),
+                        results.getString("Name"),
+                        results.getString("CountryCode"),
+                        results.getString("District"),
+                        results.getLong("Population")
+                );
 
-            City city = new City(
-                    results.getInt("ID"),
-                    results.getString("Name"),
-                    results.getString("CountryCode"),
-                    results.getString("District"),
-                    results.getLong("Population")
-            );
-
-            return city;
+                return city;
+            }
         }
         catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Converts the results of an SQL query to an SQL object.
+     *
+     * @param results ResultSet from SQL query
+     * @return Country object
+     */
+    private Country loadCountryFromResult(ResultSet results)
+    {
+        try {
+            Country country = new Country(
+                    results.getString("Code"),
+                    results.getString("Name"),
+                    results.getString("Continent"),
+                    results.getString("Region"),
+                    results.getLong("Population"),
+                    getCityFromId(results.getInt("Capital"))
+            );
+
+            return country;
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -111,7 +139,7 @@ public class DataHandler
      *
      * @return List containing all countries in the world.
      */
-    private List<Country> getCountries()
+    private List<Country> getAllCountries()
     {
         List<Country> countries = new ArrayList<Country>();
 
@@ -122,16 +150,11 @@ public class DataHandler
 
             while (results.next())
             {
-                Country country = new Country(
-                        results.getString("Code"),
-                        results.getString("Name"),
-                        results.getString("Continent"),
-                        results.getString("Region"),
-                        results.getLong("Population"),
-                        getCityFromId(results.getInt("Capital"))
-                );
+                Country country = loadCountryFromResult(results);
 
-                countries.add(country);
+                if (country != null) {
+                    countries.add(country);
+                }
             }
         }
         catch (Exception e)
@@ -143,77 +166,101 @@ public class DataHandler
     }
 
     /**
-     * Searches the entire country dataset based on a region name, and returns the countries found in that region.
+     * Searches for all the countries in a given region.
      *
-     * @param allCountries all country records in the dataset
      * @param regionName region name to get countries for
      * @return List containing all countries in a given region
      */
-    private List<Country> getCountriesInRegion(List<Country> allCountries, String regionName)
+    private List<Country> getCountriesInRegion(String regionName)
     {
-        // todo: change this to 2 methods, 1 to get countries in region, 1 to load city data for each country
-        List<Country> countries = allCountries.stream().filter(country -> country.getRegion().equals(regionName)).toList();
+        List<Country> countries = new ArrayList<Country>();
 
-        for (Country country : countries)
+        try
         {
-            // country.addCities(getCitiesInCountry());
+            PreparedStatement query = connection.prepareStatement("SELECT * FROM country WHERE region = ?");
+            query.setString(1, regionName);
+
+            ResultSet results = query.executeQuery();
+
+            while (results.next())
+            {
+                Country country = loadCountryFromResult(results);
+
+                if (country != null) {
+                    countries.add(country);
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
         }
 
         return countries;
     }
 
-    private List<Region> getRegionsInContinent(List<Country> allCountries, String continentName)
+    /**
+     * Searches for all the regions in a given continent.
+     *
+     * @param continent continent name to get regions for
+     * @return List containing all regions in a given continent
+     */
+    private List<Region> getRegionsInContinent(String continent)
     {
-        // todo: change this to use sql instead of searching the allCountries list
         List<Region> regions = new ArrayList<Region>();
 
-        // mark regions we have already stored
-        List<String> markedRegions = new ArrayList<String>();
-
-        for (Country country : allCountries)
+        try
         {
-            String region = country.getRegion();
+            PreparedStatement query = connection.prepareStatement("SELECT DISTINCT region FROM country WHERE continent = ?");
+            query.setString(1, continent);
 
-            // if region has not been stored, store it and fill it with the relevant countries
-            if (!markedRegions.contains(region))
+            ResultSet results = query.executeQuery();
+
+            while (results.next())
             {
-                markedRegions.add(region);
+                String region = results.getString("region");
 
                 Region regionObj = new Region(region);
-                regionObj.addCountries(getCountriesInRegion(allCountries, region));
+                regionObj.addCountries(getCountriesInRegion(region));
 
                 regions.add(regionObj);
             }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
         }
 
         return regions;
     }
 
-    public List<Continent> loadContinents()
+    /**
+     * Populates the continents list with continents data from the SQL database
+     *
+     * @return void
+     */
+    public void loadContinents()
     {
-        // todo: change this to use sql instead of scuffed search
-        List<Continent> continents = new ArrayList<Continent>();
-        List<Country> allCountries = getCountries();
+        continents = new ArrayList<Continent>();
 
-        // mark continents we have already stored
-        List<String> markedContinents = new ArrayList<String>();
-
-        for (Country country : allCountries)
+        try
         {
-            String continent = country.getContinent();
+            PreparedStatement query = connection.prepareStatement("SELECT DISTINCT continent FROM country");
+            ResultSet results = query.executeQuery();
 
-            // if continent has not been stored, store it and fill it with the relevant regions
-            if (!markedContinents.contains(continent))
+            while (results.next())
             {
-                markedContinents.add(continent);
+                String continent = results.getString("continent");
 
                 Continent continentObj = new Continent(continent);
-                continentObj.addRegions(getRegionsInContinent(allCountries, continent));
+                continentObj.addRegions(getRegionsInContinent(continent));
 
                 continents.add(continentObj);
             }
         }
-
-        return continents;
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

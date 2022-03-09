@@ -23,7 +23,7 @@ public class Region {
     {
         for (Country country : countries)
         {
-            countries.add(country);
+            this.countries.add(country);
         }
     }
 
