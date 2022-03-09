@@ -30,11 +30,6 @@ public class App
 
         System.out.println(String.format("[+] Established connection to the database! Took %sms", System.currentTimeMillis() - Start));
 
-        ArrayList<Country> countries = dataHandler.getCountries();
-
-        for (Country country : countries)
-        {
-            System.out.println("[*] " + country.toString());
-        }
+        dataHandler.loadContinents();
     }
 }
