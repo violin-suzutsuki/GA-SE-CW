@@ -21,7 +21,7 @@
 
 #### App URL
 
-- website: `localhost/app`
+- website: `http://localhost/app`
 
 #### Command List 
 
