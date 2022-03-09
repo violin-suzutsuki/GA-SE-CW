@@ -36,6 +36,13 @@ public class App {
 
         System.out.println(String.format("[+] Established connection to the database! Took %sms", System.currentTimeMillis() - Start));
 
-        SpringApplication.run(App.class, args);
+        if (args.length > 0 && args[0].contains("-test"))
+        {
+            // do nothing
+        }
+        else
+        {
+            SpringApplication.run(App.class, args);
+        }
     }
 }

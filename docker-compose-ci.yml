@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker-ci/Dockerfile
+
+  db:
+    build: db/.
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+
+  web:
+    build: web/.
+    restart: always
+    ports:
+      - "80:80"
