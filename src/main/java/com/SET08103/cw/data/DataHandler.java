@@ -14,15 +14,26 @@ import java.util.List;
  *
  * This is the class that handles communication with the backend database.
  */
-public class DataHandler
+public final class DataHandler
 {
+    private static DataHandler INSTANCE;
+
     private String CONNECTION_STRING = "jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true";
     private String USER = "root";
     private String PASSWORD = "example";
 
     private Connection connection;
-
     private List<Continent> continents;
+
+    public static DataHandler getInstance()
+    {
+        if (INSTANCE == null)
+        {
+            INSTANCE = new DataHandler();
+        }
+
+        return INSTANCE;
+    }
 
     /**
      * Attempts to establish a connection with the supplied database.
@@ -241,6 +252,11 @@ public class DataHandler
      */
     public void loadContinents()
     {
+        if (continents == null)
+        {
+            return;
+        }
+
         continents = new ArrayList<Continent>();
 
         try

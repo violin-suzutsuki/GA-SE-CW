@@ -28,7 +28,7 @@ public class App {
 
         long Start = System.currentTimeMillis();
 
-        DataHandler dataHandler = new DataHandler();
+        DataHandler dataHandler = DataHandler.getInstance();
         boolean result = dataHandler.connect(100);
 
         if (result == false)
@@ -39,6 +39,8 @@ public class App {
 
         System.out.println(String.format("[+] Established connection to the database! Took %sms", System.currentTimeMillis() - Start));
 
+        dataHandler.loadContinents();
+
         if (args.length > 0 && args[0].contains("-test"))
         {
             // do nothing
@@ -46,20 +48,6 @@ public class App {
         else
         {
             SpringApplication.run(App.class, args);
-        }
-
-        dataHandler.loadContinents();
-
-        for (Continent continent : dataHandler.getContinents())
-        {
-            for (Region region : continent.getRegions())
-            {
-                for (Country country : region.getCountries())
-                {
-                    System.out.println(String.format("%s - %s: %s", continent.getName(), region.getName(), country.toString()));
-                }
-            }
-
         }
     }
 }
