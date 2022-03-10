@@ -8,19 +8,18 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
- * DataHandler.java
+ * DataParser.java
  *
- * This is the class that handles parsing the in-memory sql objects. It is responsible for generating the data used for reports.
+ * Wrapper class that communicates with the DataHandler.
  */
 public final class DataParser {
     /**
      * Parses any java object into a json string.
      *
      * @param object the object to serialize
-     * @return a json string
+     * @return a json string, empty if there was a serialization error
      */
     public static String toJson(Object object)
     {
@@ -33,7 +32,7 @@ public final class DataParser {
         }
         catch(Exception e)
         {
-            return "";
+            return "{}";
         }
 
         return json;
@@ -81,6 +80,21 @@ public final class DataParser {
         for (Country country : getCountriesInWorld())
         {
             if (country.getContinent().toLowerCase().contains(continentName.toLowerCase()))
+            {
+                countries.add(country);
+            }
+        }
+
+        return countries;
+    }
+
+    public static List<Country> getCountriesInRegion(String regionName)
+    {
+        List<Country> countries = new ArrayList<Country>();
+
+        for (Country country : getCountriesInWorld())
+        {
+            if (country.getRegion().toLowerCase().contains(regionName.toLowerCase()))
             {
                 countries.add(country);
             }

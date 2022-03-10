@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 public class Controller {
     /**
-     * api endpoint to handle the generation of reports and return the data in a json string
+     * API endpoint to handle the generation of reports and return the data in the format of a json string
      *
      * @param id report id to run
      * @param input any user input, defaults to "" if there is none
@@ -41,7 +41,7 @@ public class Controller {
                 List<Country> countries = DataParser.getCountriesInWorld();
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
-               return DataParser.toJson(countries);
+                return DataParser.toJson(countries);
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/23
@@ -49,6 +49,16 @@ public class Controller {
             case 23:
             {
                 List<Country> countries = DataParser.getCountriesInContinent(input);
+                countries.sort(Comparator.comparing(Country::getPopulation).reversed());
+
+                return DataParser.toJson(countries);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/24
+            // Create Report: All the countries in a region organised by largest population to smallest
+            case 24:
+            {
+                List<Country> countries = DataParser.getCountriesInRegion(input);
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 return DataParser.toJson(countries);
