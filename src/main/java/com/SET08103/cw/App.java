@@ -22,8 +22,7 @@ import java.util.ArrayList;
 @SpringBootApplication
 @RestController
 public class App {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println("[*] Establishing connection to SQL database...");
 
         long Start = System.currentTimeMillis();
@@ -31,8 +30,7 @@ public class App {
         DataHandler dataHandler = DataHandler.getInstance();
         boolean result = dataHandler.connect(100);
 
-        if (result == false)
-        {
+        if (result == false) {
             System.out.println("[-] Failed to connect to the database.");
             return;
         }
@@ -41,12 +39,10 @@ public class App {
 
         dataHandler.loadContinents();
 
-        if (args.length > 0 && args[0].contains("-test"))
-        {
+        if (args.length > 0 && args[0].contains("-test")) {
             // do nothing
         }
-        else
-        {
+        else {
             SpringApplication.run(App.class, args);
         }
     }

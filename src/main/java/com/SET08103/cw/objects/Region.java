@@ -18,8 +18,7 @@ public class Region {
      *
      * @param name Name of the region.
      */
-    public Region(String name)
-    {
+    public Region(String name) {
         this.name = name;
         this.countries = new ArrayList<Country>();
     }
@@ -29,10 +28,8 @@ public class Region {
      *
      * @param countries List of countries to add.
      */
-    public void addCountries(List<Country> countries)
-    {
-        for (Country country : countries)
-        {
+    public void addCountries(List<Country> countries) {
+        for (Country country : countries) {
             this.countries.add(country);
         }
     }
@@ -42,8 +39,7 @@ public class Region {
      *
      * @return List of countries for this region.
      */
-    public List<Country> getCountries()
-    {
+    public List<Country> getCountries() {
         return countries;
     }
 
@@ -52,8 +48,7 @@ public class Region {
      *
      * @return Name of this region.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

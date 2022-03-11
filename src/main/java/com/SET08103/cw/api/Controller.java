@@ -3,14 +3,10 @@ package com.SET08103.cw.api;
 import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.Country;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -32,12 +28,10 @@ public class Controller {
     public String api(@RequestParam(value="reportId") Integer id, @RequestParam(value="userInput", defaultValue="") String input) {
         DataHandler dataHandler = DataHandler.getInstance();
 
-        switch (id)
-        {
+        switch (id) {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/22
             // Create Report: All the countries in the world organised by largest population to smallest
-            case 22:
-            {
+            case 22: {
                 List<Country> countries = DataParser.getCountriesInWorld();
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
@@ -46,8 +40,7 @@ public class Controller {
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/23
             // Create Report: All the countries in a continent organised by largest population to smallest
-            case 23:
-            {
+            case 23: {
                 List<Country> countries = DataParser.getCountriesInContinent(input);
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
@@ -56,16 +49,14 @@ public class Controller {
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/24
             // Create Report: All the countries in a region organised by largest population to smallest
-            case 24:
-            {
+            case 24: {
                 List<Country> countries = DataParser.getCountriesInRegion(input);
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 return DataParser.toJson(countries);
             }
 
-            default:
-            {
+            default: {
                 return "";
             }
         }

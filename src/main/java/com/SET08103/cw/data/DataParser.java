@@ -21,8 +21,7 @@ public final class DataParser {
      * @param object the object to serialize
      * @return a json string, empty if there was a serialization error
      */
-    public static String toJson(Object object)
-    {
+    public static String toJson(Object object) {
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
         String json;
@@ -30,8 +29,7 @@ public final class DataParser {
         try {
             json = objectWriter.writeValueAsString(object);
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             return "{}";
         }
 
@@ -43,8 +41,7 @@ public final class DataParser {
      *
      * @return a list of continents.
      */
-    public static List<Continent> getContinents()
-    {
+    public static List<Continent> getContinents() {
         return DataHandler.getInstance().getContinents();
     }
 
@@ -53,8 +50,7 @@ public final class DataParser {
      *
      * @return a list of countries
      */
-    public static List<Country> getCountriesInWorld()
-    {
+    public static List<Country> getCountriesInWorld() {
         List<Continent> continents = getContinents();
         List<Country> countries = new ArrayList<Country>();
 
@@ -73,14 +69,11 @@ public final class DataParser {
      * @param continentName continent name to search for, non caps-sensitive
      * @return a list of countries
      */
-    public static List<Country> getCountriesInContinent(String continentName)
-    {
+    public static List<Country> getCountriesInContinent(String continentName) {
         List<Country> countries = new ArrayList<Country>();
 
-        for (Country country : getCountriesInWorld())
-        {
-            if (country.getContinent().toLowerCase().contains(continentName.toLowerCase()))
-            {
+        for (Country country : getCountriesInWorld()) {
+            if (country.getContinent().toLowerCase().contains(continentName.toLowerCase())) {
                 countries.add(country);
             }
         }
@@ -88,14 +81,17 @@ public final class DataParser {
         return countries;
     }
 
-    public static List<Country> getCountriesInRegion(String regionName)
-    {
+    /**
+     * Get all of the countries in a region sorted by population in descending order
+     *
+     * @param regionName region name to search for, non caps-sensitive
+     * @return a list of countries
+     */
+    public static List<Country> getCountriesInRegion(String regionName) {
         List<Country> countries = new ArrayList<Country>();
 
-        for (Country country : getCountriesInWorld())
-        {
-            if (country.getRegion().toLowerCase().contains(regionName.toLowerCase()))
-            {
+        for (Country country : getCountriesInWorld()) {
+            if (country.getRegion().toLowerCase().contains(regionName.toLowerCase())) {
                 countries.add(country);
             }
         }
