@@ -12,10 +12,10 @@ services:
     ports:
       - "3306:3306"
 
-  web:
-    build: web/.
-    restart: always
+  react-app:
+    build: react-app/.
     ports:
-      - "80:80"
+      - "8080:80"
+
 
 

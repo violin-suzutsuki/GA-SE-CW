@@ -14,8 +14,7 @@ services:
     ports:
       - "3306:3306"
 
-  web:
-    build: web/.
-    restart: always
-    ports:
-      - "80:80"
+  react-app:
+      build: react-app/.
+      ports:
+        - "8080:80"
