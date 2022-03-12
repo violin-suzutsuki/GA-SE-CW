@@ -231,7 +231,7 @@ public final class DataHandler {
      * @return void
      */
     public void loadContinents() {
-        if (continents == null) {
+        if (continents != null) {
             return;
         }
 

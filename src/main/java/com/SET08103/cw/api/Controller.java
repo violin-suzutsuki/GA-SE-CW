@@ -57,7 +57,7 @@ public class Controller {
             }
 
             default: {
-                return "";
+                return "{}";
             }
         }
     }
