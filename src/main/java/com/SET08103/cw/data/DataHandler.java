@@ -13,15 +13,29 @@ import java.util.List;
  * DataHandler.java
  *
  * This is the class that handles communication with the backend database.
+ * It is a singleton that is referenced via DataHandler.getInstance() to prevent inefficient database calls.
  */
-public class DataHandler
-{
+public final class DataHandler {
+    private static DataHandler INSTANCE;
+
+    /**
+     * Gets the class instance, or instantiates it if it does not yet exist.
+     *
+     * @return DataHandler object
+     */
+    public static DataHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new DataHandler();
+        }
+
+        return INSTANCE;
+    }
+
     private String CONNECTION_STRING = "jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true";
     private String USER = "root";
     private String PASSWORD = "example";
 
     private Connection connection;
-
     private List<Continent> continents;
 
     /**
@@ -30,32 +44,27 @@ public class DataHandler
      * @param retryNumber number of times to attempt the connection
      * @return boolean depending on if connection was successful
      */
-    public boolean connect(int retryNumber)
-    {
-        try
-        {
+    public boolean connect(int retryNumber) {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }
-        catch (ClassNotFoundException e)
-        {
+        catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             return false;
         }
 
-        for (int idx = 0; idx < retryNumber; idx++)
-        {
-            try
-            {
+        for (int idx = 0; idx < retryNumber; idx++) {
+            try {
                 Thread.sleep(1000);
                 connection = DriverManager.getConnection(CONNECTION_STRING, USER, PASSWORD);
             }
-            catch (SQLException | InterruptedException e)
-            {
+            catch (SQLException | InterruptedException e) {
                 System.out.println("[-] Unable to connect to SQL database, retrying...");
             }
 
-            if (connection != null)
+            if (connection != null) {
                 return true;
+            }
         }
 
         return false;
@@ -66,8 +75,7 @@ public class DataHandler
      *
      * @return List of continents
      */
-    public List<Continent> getContinents()
-    {
+    public List<Continent> getContinents() {
         return continents;
     }
 
@@ -77,10 +85,8 @@ public class DataHandler
      * @param id id to search for
      * @return City record containing city information, or null if not found
      */
-    private City getCityFromId(int id)
-    {
-        try
-        {
+    private City getCityFromId(int id) {
+        try {
             PreparedStatement query = connection.prepareStatement("SELECT * FROM city WHERE ID = ?");
             query.setInt(1, id);
 
@@ -98,8 +104,7 @@ public class DataHandler
                 return city;
             }
         }
-        catch (SQLException e)
-        {
+        catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -112,8 +117,7 @@ public class DataHandler
      * @param results ResultSet from SQL query
      * @return Country object
      */
-    private Country loadCountryFromResult(ResultSet results)
-    {
+    private Country loadCountryFromResult(ResultSet results) {
         try {
             Country country = new Country(
                     results.getString("Code"),
@@ -126,8 +130,7 @@ public class DataHandler
 
             return country;
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -139,17 +142,14 @@ public class DataHandler
      *
      * @return List containing all countries in the world.
      */
-    private List<Country> getAllCountries()
-    {
+    private List<Country> getAllCountries() {
         List<Country> countries = new ArrayList<Country>();
 
-        try
-        {
+        try {
             PreparedStatement query = connection.prepareStatement("SELECT * FROM country");
             ResultSet results = query.executeQuery();
 
-            while (results.next())
-            {
+            while (results.next()) {
                 Country country = loadCountryFromResult(results);
 
                 if (country != null) {
@@ -157,8 +157,7 @@ public class DataHandler
                 }
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -171,19 +170,16 @@ public class DataHandler
      * @param regionName region name to get countries for
      * @return List containing all countries in a given region
      */
-    private List<Country> getCountriesInRegion(String regionName)
-    {
+    private List<Country> getCountriesInRegion(String regionName) {
         List<Country> countries = new ArrayList<Country>();
 
-        try
-        {
+        try {
             PreparedStatement query = connection.prepareStatement("SELECT * FROM country WHERE region = ?");
             query.setString(1, regionName);
 
             ResultSet results = query.executeQuery();
 
-            while (results.next())
-            {
+            while (results.next()) {
                 Country country = loadCountryFromResult(results);
 
                 if (country != null) {
@@ -191,8 +187,7 @@ public class DataHandler
                 }
             }
         }
-        catch (SQLException e)
-        {
+        catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -205,19 +200,16 @@ public class DataHandler
      * @param continent continent name to get regions for
      * @return List containing all regions in a given continent
      */
-    private List<Region> getRegionsInContinent(String continent)
-    {
+    private List<Region> getRegionsInContinent(String continent) {
         List<Region> regions = new ArrayList<Region>();
 
-        try
-        {
+        try {
             PreparedStatement query = connection.prepareStatement("SELECT DISTINCT region FROM country WHERE continent = ?");
             query.setString(1, continent);
 
             ResultSet results = query.executeQuery();
 
-            while (results.next())
-            {
+            while (results.next()) {
                 String region = results.getString("region");
 
                 Region regionObj = new Region(region);
@@ -226,8 +218,7 @@ public class DataHandler
                 regions.add(regionObj);
             }
         }
-        catch (SQLException e)
-        {
+        catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -239,17 +230,18 @@ public class DataHandler
      *
      * @return void
      */
-    public void loadContinents()
-    {
+    public void loadContinents() {
+        if (continents != null) {
+            return;
+        }
+
         continents = new ArrayList<Continent>();
 
-        try
-        {
+        try {
             PreparedStatement query = connection.prepareStatement("SELECT DISTINCT continent FROM country");
             ResultSet results = query.executeQuery();
 
-            while (results.next())
-            {
+            while (results.next()) {
                 String continent = results.getString("continent");
 
                 Continent continentObj = new Continent(continent);
@@ -258,8 +250,7 @@ public class DataHandler
                 continents.add(continentObj);
             }
         }
-        catch (SQLException e)
-        {
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }

@@ -21,8 +21,7 @@ public class City {
      * @param district Which district the city is in
      * @param population Population of the city
      */
-    public City(int id, String name, String countryCode, String district, long population)
-    {
+    public City(int id, String name, String countryCode, String district, long population) {
         this.id = id;
         this.name = name;
         this.countryCode = countryCode;
@@ -35,8 +34,7 @@ public class City {
      *
      * @return City information.
      */
-    public String toString()
-    {
+    public String toString() {
         return String.format("City: %s (%s), country code: %s, district: %s, population: %s", name, id, countryCode, district, population);
     }
 }

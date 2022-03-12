@@ -18,8 +18,7 @@ public class Continent {
      *
      * @param name Name of the continent.
      */
-    public Continent(String name)
-    {
+    public Continent(String name) {
         this.name = name;
         this.regions = new ArrayList<Region>();
     }
@@ -29,10 +28,8 @@ public class Continent {
      *
      * @param regions List of regions to add.
      */
-    public void addRegions(List<Region> regions)
-    {
-        for (Region region : regions)
-        {
+    public void addRegions(List<Region> regions) {
+        for (Region region : regions) {
             this.regions.add(region);
         }
     }
@@ -42,8 +39,7 @@ public class Continent {
      *
      * @return List of regions.
      */
-    public List<Region> getRegions()
-    {
+    public List<Region> getRegions() {
         return regions;
     }
 
@@ -52,8 +48,7 @@ public class Continent {
      *
      * @return name of continent.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

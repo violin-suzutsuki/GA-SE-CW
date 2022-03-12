@@ -22,44 +22,28 @@ import java.util.ArrayList;
 @SpringBootApplication
 @RestController
 public class App {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println("[*] Establishing connection to SQL database...");
 
         long Start = System.currentTimeMillis();
 
-        DataHandler dataHandler = new DataHandler();
+        DataHandler dataHandler = DataHandler.getInstance();
         boolean result = dataHandler.connect(100);
 
-        if (result == false)
-        {
+        if (result == false) {
             System.out.println("[-] Failed to connect to the database.");
             return;
         }
 
         System.out.println(String.format("[+] Established connection to the database! Took %sms", System.currentTimeMillis() - Start));
 
-        if (args.length > 0 && args[0].contains("-test"))
-        {
-            // do nothing
-        }
-        else
-        {
-            SpringApplication.run(App.class, args);
-        }
-
         dataHandler.loadContinents();
 
-        for (Continent continent : dataHandler.getContinents())
-        {
-            for (Region region : continent.getRegions())
-            {
-                for (Country country : region.getCountries())
-                {
-                    System.out.println(String.format("%s - %s: %s", continent.getName(), region.getName(), country.toString()));
-                }
-            }
-
+        if (args.length > 0 && args[0].contains("-test")) {
+            // do nothing
+        }
+        else {
+            SpringApplication.run(App.class, args);
         }
     }
 }

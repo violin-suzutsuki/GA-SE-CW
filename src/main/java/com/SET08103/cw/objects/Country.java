@@ -5,8 +5,7 @@ package com.SET08103.cw.objects;
  *
  * Class to store data about a country.
  */
-public class Country
-{
+public class Country {
     private String code;
     private String name;
     private String continent;
@@ -24,8 +23,7 @@ public class Country
      * @param population Population of the country
      * @param capital Its capital city
      */
-    public Country(String code, String name, String continent, String region, long population, City capital)
-    {
+    public Country(String code, String name, String continent, String region, long population, City capital) {
         this.code = code;
         this.name = name;
         this.continent = continent;
@@ -39,8 +37,7 @@ public class Country
      *
      * @return country code.
      */
-    public String getCode()
-    {
+    public String getCode() {
         return code;
     }
 
@@ -49,8 +46,7 @@ public class Country
      *
      * @return country name.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -59,8 +55,7 @@ public class Country
      *
      * @return continent name.
      */
-    public String getContinent()
-    {
+    public String getContinent() {
         return continent;
     }
 
@@ -69,8 +64,7 @@ public class Country
      *
      * @return region name.
      */
-    public String getRegion()
-    {
+    public String getRegion() {
         return region;
     }
 
@@ -79,8 +73,7 @@ public class Country
      *
      * @return population.
      */
-    public long getPopulation()
-    {
+    public long getPopulation() {
         return population;
     }
 
@@ -89,8 +82,7 @@ public class Country
      *
      * @return City
      */
-    public City getCapital()
-    {
+    public City getCapital() {
         return capital;
     }
 
@@ -99,8 +91,7 @@ public class Country
      *
      * @return country name and information about its capital city in a digestible format.
      */
-    public String toString()
-    {
+    public String toString() {
         return String.format("%s (capital city: [%s])", name, capital == null ? "none" : capital.toString());
     }
 }
