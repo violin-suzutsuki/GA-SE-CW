@@ -15,7 +15,6 @@ services:
   react-app:
     build: react-app/.
     ports:
-      - "8080:80"
-
+      - "80:80"
 
 
