@@ -24,7 +24,7 @@ public class Controller {
      * @param input any user input, defaults to "" if there is none
      * @return a json string
      */
-    @RequestMapping("/api")
+    @RequestMapping("/report")
     public String api(@RequestParam(value="reportId") Integer id, @RequestParam(value="userInput", defaultValue="") String input) {
         DataHandler dataHandler = DataHandler.getInstance();
 
