@@ -60,4 +60,11 @@ public class UnitTests {
         assertEquals(continent.getRegions().get(1), region2);
     }
 
+    @Test
+    void testCityToString() {
+        City city = new City(1, "testCity", "TEST", "testDistrict", 10);
+
+        assertEquals(city.toString(), "City: testCity (1), country code: TEST, district: testDistrict, population: 10");
+    }
+
 }
