@@ -29,6 +29,26 @@ public class City {
         this.population = population;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public long getPopulation() {
+        return population;
+    }
+
     /**
      * Returns information about the city in a digestible string format.
      *
