@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class UnitTests {
     @Test
-    void testGetCityConstructors() {
+    void testCityConstructors() {
         City city = new City(1, "testCity", "TEST", "testDistrict", 10);
 
         assertEquals(city.getId(), 1);
@@ -28,14 +28,14 @@ public class UnitTests {
     }
 
     @Test
-    void testGetContinentConstructors() {
+    void testContinentConstructors() {
         Continent continent = new Continent("testContinent");
 
         assertEquals(continent.getName(), "testContinent");
     }
 
     @Test
-    void testGetRegionConstructors() {
+    void testRegionConstructors() {
         Region region = new Region("testRegion");
 
         assertEquals(region.getName(), "testRegion");
