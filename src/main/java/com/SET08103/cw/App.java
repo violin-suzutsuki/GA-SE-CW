@@ -29,7 +29,7 @@ public class App {
         long Start = System.currentTimeMillis();
 
         DataHandler dataHandler = DataHandler.getInstance();
-        boolean result = dataHandler.connect(100);
+        boolean result = dataHandler.connect("db:3306", 100);
 
         if (result == false) {
             System.out.println("[-] Failed to connect to the database.");

@@ -28,7 +28,7 @@ public final class DataHandler {
         return INSTANCE;
     }
 
-    private String CONNECTION_STRING = "jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true";
+    private String CONNECTION_STRING = "jdbc:mysql://%s/world?useSSL=false&allowPublicKeyRetrieval=true";
     private String USER = "root";
     private String PASSWORD = "example";
 
@@ -41,7 +41,7 @@ public final class DataHandler {
      * @param retryNumber number of times to attempt the connection
      * @return boolean depending on if connection was successful
      */
-    public boolean connect(int retryNumber) {
+    public boolean connect(String host, int retryNumber) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }
@@ -53,7 +53,7 @@ public final class DataHandler {
         for (int idx = 0; idx < retryNumber; idx++) {
             try {
                 Thread.sleep(1000);
-                connection = DriverManager.getConnection(CONNECTION_STRING, USER, PASSWORD);
+                connection = DriverManager.getConnection(String.format(CONNECTION_STRING, host), USER, PASSWORD);
             }
             catch (SQLException | InterruptedException e) {
                 System.out.println("[-] Unable to connect to SQL database, retrying...");

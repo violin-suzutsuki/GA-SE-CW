@@ -1,5 +1,7 @@
 package com.SET08103.cw.objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +10,7 @@ public class District {
 
     private List<City> cities;
 
-    public District(String name) throws Exception {
-        if (name == "") {
-            throw new Exception("No name provided for district.");
-        }
-
+    public District(@JsonProperty("name") String name) throws Exception {
         this.name = name;
         this.cities = new ArrayList<City>();
     }

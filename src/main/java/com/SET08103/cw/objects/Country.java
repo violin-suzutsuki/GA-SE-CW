@@ -1,6 +1,7 @@
 package com.SET08103.cw.objects;
 
 import com.SET08103.cw.interfaces.Population;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.InvalidPropertyException;
 
 import java.util.ArrayList;
@@ -31,13 +32,9 @@ public class Country implements Population {
      * @param population Population of the country
      * @param capital Its capital city
      */
-    public Country(String code, String name, String continent, String region, long population, City capital) throws Exception {
+    public Country(@JsonProperty("code") String code, @JsonProperty("name") String name, @JsonProperty("continent") String continent, @JsonProperty("region") String region, @JsonProperty("population") long population, @JsonProperty("capital") City capital) throws Exception {
         if (population < 0) {
             throw new Exception("Invalid population provided for country.");
-        }
-
-        if (capital == null) {
-            throw new Exception("No capital city was provided for country.");
         }
 
         this.code = code;

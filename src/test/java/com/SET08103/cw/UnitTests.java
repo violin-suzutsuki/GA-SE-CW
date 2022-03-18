@@ -91,10 +91,6 @@ public class UnitTests {
     @Test
     void testCountryConstructorsInvalid() {
         assertThrows(Exception.class, () -> {
-            Country countryWithNullCity = new Country("TEST", "testCountry", "continent", "region", 1, null);
-        });
-
-        assertThrows(Exception.class, () -> {
             City city = new City(1, "testCity", "TEST", "testDistrict", 10);
             Country countryWithInvalidPopulation = new Country("TEST", "testCountry", "continent", "region", -1, null);
         });
@@ -107,13 +103,6 @@ public class UnitTests {
         assertEquals(district.getName(), "district");
         assertNotNull(district.getCities());
         assertEquals(district.getCities().stream().count(), 0);
-    }
-
-    @Test
-    void testDistrictConstructorsInvalid() {
-        assertThrows(Exception.class, () -> {
-            District district = new District("");
-        });
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.SET08103.cw.objects;
 
 import com.SET08103.cw.interfaces.Population;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * City.java
@@ -23,7 +24,7 @@ public class City implements Population {
      * @param district Which district the city is in
      * @param population Population of the city
      */
-    public City(int id, String name, String countryCode, String district, long population) throws Exception {
+    public City(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("countryCode") String countryCode, @JsonProperty("district") String district, @JsonProperty("population") long population) throws Exception {
         if (id < 0) {
             throw new Exception("Invalid id provided for city.");
         }
@@ -34,10 +35,6 @@ public class City implements Population {
 
         if (countryCode == "") {
             throw new Exception("No country code provided for city.");
-        }
-
-        if (district == "") {
-            throw new Exception("No district provided for city.");
         }
 
         if (population < 0) {
