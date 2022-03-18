@@ -1,9 +1,8 @@
 package com.SET08103.cw;
 
-import com.SET08103.cw.objects.City;
-import com.SET08103.cw.objects.Continent;
-import com.SET08103.cw.objects.Region;
+import com.SET08103.cw.objects.*;
 import org.junit.jupiter.api.*;
+import org.springframework.beans.InvalidPropertyException;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class UnitTests {
     @Test
-    void testCityConstructors() {
+    void testCityConstructors() throws Exception {
         City city = new City(1, "testCity", "TEST", "testDistrict", 10);
 
         assertEquals(city.getId(), 1);
@@ -28,21 +27,97 @@ public class UnitTests {
     }
 
     @Test
-    void testContinentConstructors() {
+    void testCityConstructorsInvalid() {
+        assertThrows(Exception.class, () -> {
+            City cityWithInvalidID = new City(-1, "testCity", "TEST", "testDistrict", 10);
+        });
+
+        assertThrows(Exception.class, () -> {
+            City cityWithNoName = new City(-1, "", "TEST", "testDistrict", 10);
+        });
+
+        assertThrows(Exception.class, () -> {
+            City cityWithNoCountryCode = new City(1, "TEST", "", "testDistrict", 10);
+        });
+
+        assertThrows(Exception.class, () -> {
+            City cityWithInvalidPopulation = new City(1, "testCity", "TEST", "testDistrict", -10);
+        });
+    }
+
+    @Test
+    void testContinentConstructors() throws Exception {
         Continent continent = new Continent("testContinent");
 
         assertEquals(continent.getName(), "testContinent");
     }
 
     @Test
-    void testRegionConstructors() {
-        Region region = new Region("testRegion");
-
-        assertEquals(region.getName(), "testRegion");
+    void testContinentConstructorsInvalid() {
+        assertThrows(Exception.class, () -> {
+            Continent continentWithNoName = new Continent("");
+        });
     }
 
     @Test
-    void testAddContinentRegions() {
+    void testRegionConstructors() throws Exception {
+        Region region = new Region("testRegion");
+
+        assertEquals(region.getName(), "testRegion");
+        assertNotNull(region.getCountries());
+        assertEquals(region.getCountries().stream().count(), 0);
+    }
+
+    @Test
+    void testRegionConstructorsInvalid() {
+        assertThrows(Exception.class, () -> {
+            Region region = new Region("");
+        });
+    }
+
+    @Test
+    void testCountryConstructors() throws Exception {
+        City city = new City(1, "testCity", "TEST", "testDistrict", 10);
+        Country country = new Country("TEST", "testCountry", "continent", "region", 1, city);
+
+        assertEquals(country.getCode(), "TEST");
+        assertEquals(country.getName(), "testCountry");
+        assertEquals(country.getContinent(), "continent");
+        assertEquals(country.getRegion(), "region");
+        assertEquals(country.getPopulation(), 1);
+        assertEquals(country.getCapital(), city);
+    }
+
+    @Test
+    void testCountryConstructorsInvalid() {
+        assertThrows(Exception.class, () -> {
+            Country countryWithNullCity = new Country("TEST", "testCountry", "continent", "region", 1, null);
+        });
+
+        assertThrows(Exception.class, () -> {
+            City city = new City(1, "testCity", "TEST", "testDistrict", 10);
+            Country countryWithInvalidPopulation = new Country("TEST", "testCountry", "continent", "region", -1, null);
+        });
+    }
+
+    @Test
+    void testDistrictConstructors() throws Exception {
+        District district = new District("district");
+
+        assertEquals(district.getName(), "district");
+        assertNotNull(district.getCities());
+        assertEquals(district.getCities().stream().count(), 0);
+    }
+
+    @Test
+    void testDistrictConstructorsInvalid() {
+        assertThrows(Exception.class, () -> {
+            District district = new District("");
+        });
+    }
+
+    @Test
+    void testAddContinentRegions() throws Exception {
         Continent continent = new Continent("testContinent");
 
         Region region = new Region("testRegion");
@@ -61,7 +136,7 @@ public class UnitTests {
     }
 
     @Test
-    void testCityToString() {
+    void testCityToString() throws Exception {
         City city = new City(1, "testCity", "TEST", "testDistrict", 10);
 
         assertEquals(city.toString(), "City: testCity (1), country code: TEST, district: testDistrict, population: 10");

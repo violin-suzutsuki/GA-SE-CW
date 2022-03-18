@@ -1,11 +1,13 @@
 package com.SET08103.cw.objects;
 
+import com.SET08103.cw.interfaces.Population;
+
 /**
  * City.java
  *
  * Class to store data about a city.
  */
-public class City {
+public class City implements Population {
     public int id;
     public String name;
     public String countryCode;
@@ -21,7 +23,27 @@ public class City {
      * @param district Which district the city is in
      * @param population Population of the city
      */
-    public City(int id, String name, String countryCode, String district, long population) {
+    public City(int id, String name, String countryCode, String district, long population) throws Exception {
+        if (id < 0) {
+            throw new Exception("Invalid id provided for city.");
+        }
+
+        if (name == "") {
+            throw new Exception("No name provided for city.");
+        }
+
+        if (countryCode == "") {
+            throw new Exception("No country code provided for city.");
+        }
+
+        if (district == "") {
+            throw new Exception("No district provided for city.");
+        }
+
+        if (population < 0) {
+            throw new Exception("Invalid population provided for city.");
+        }
+
         this.id = id;
         this.name = name;
         this.countryCode = countryCode;
@@ -29,22 +51,47 @@ public class City {
         this.population = population;
     }
 
+    /**
+     * Returns the cities database id.
+     *
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Returns the cities name.
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the cities country code.
+     *
+     * @return country code
+     */
     public String getCountryCode() {
         return countryCode;
     }
 
+    /**
+     * Returns the cities district.
+     *
+     * @return district
+     */
     public String getDistrict() {
         return district;
     }
 
+    /**
+     * Returns the cities population.
+     *
+     * @return population
+     */
     public long getPopulation() {
         return population;
     }

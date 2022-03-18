@@ -18,7 +18,11 @@ public class Region {
      *
      * @param name Name of the region.
      */
-    public Region(String name) {
+    public Region(String name) throws Exception {
+        if (name == "") {
+            throw new Exception("No name provided for region.");
+        }
+
         this.name = name;
         this.countries = new ArrayList<Country>();
     }

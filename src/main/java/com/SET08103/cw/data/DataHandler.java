@@ -1,9 +1,6 @@
 package com.SET08103.cw.data;
 
-import com.SET08103.cw.objects.City;
-import com.SET08103.cw.objects.Continent;
-import com.SET08103.cw.objects.Country;
-import com.SET08103.cw.objects.Region;
+import com.SET08103.cw.objects.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -104,7 +101,7 @@ public final class DataHandler {
                 return city;
             }
         }
-        catch (SQLException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -164,6 +161,59 @@ public final class DataHandler {
         return countries;
     }
 
+    private List<City> getCitiesInDistrict(String district) {
+        List<City> cities = new ArrayList<City>();
+
+        try {
+            PreparedStatement query = connection.prepareStatement("SELECT * FROM city WHERE District = ?");
+            query.setString(1, district);
+
+            ResultSet results = query.executeQuery();
+
+            while (results.next()) {
+                City city = new City(
+                        results.getInt("ID"),
+                        results.getString("Name"),
+                        results.getString("CountryCode"),
+                        results.getString("District"),
+                        results.getLong("Population")
+                );
+
+                cities.add(city);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cities;
+    }
+
+    private List<District> getDistrictsInCountry(String countryCode) {
+        List<District> districts = new ArrayList<District>();
+
+        try {
+            PreparedStatement query = connection.prepareStatement("SELECT DISTINCT District FROM city WHERE CountryCode = ?");
+            query.setString(1, countryCode);
+
+            ResultSet results = query.executeQuery();
+
+            while (results.next()) {
+                String district = results.getString("District");
+
+                District districtObj = new District(district);
+                districtObj.addCities(getCitiesInDistrict(district));
+
+                districts.add(districtObj);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return districts;
+    }
+
     /**
      * Searches for all the countries in a given region.
      *
@@ -183,6 +233,7 @@ public final class DataHandler {
                 Country country = loadCountryFromResult(results);
 
                 if (country != null) {
+                    country.addDistricts(getDistrictsInCountry(country.getCode()));
                     countries.add(country);
                 }
             }
@@ -218,7 +269,7 @@ public final class DataHandler {
                 regions.add(regionObj);
             }
         }
-        catch (SQLException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -250,7 +301,7 @@ public final class DataHandler {
                 continents.add(continentObj);
             }
         }
-        catch (SQLException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

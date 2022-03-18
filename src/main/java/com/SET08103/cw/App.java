@@ -1,6 +1,7 @@
 package com.SET08103.cw;
 
 import com.SET08103.cw.data.DataHandler;
+import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.Continent;
 import com.SET08103.cw.objects.Country;
 import com.SET08103.cw.objects.Region;

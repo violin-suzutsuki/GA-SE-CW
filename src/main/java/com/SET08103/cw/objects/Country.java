@@ -1,17 +1,25 @@
 package com.SET08103.cw.objects;
 
+import com.SET08103.cw.interfaces.Population;
+import org.springframework.beans.InvalidPropertyException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Country.java
  *
  * Class to store data about a country.
  */
-public class Country {
+public class Country implements Population {
     private String code;
     private String name;
     private String continent;
     private String region;
     private long population;
     private City capital;
+
+    private List<District> districts;
 
     /**
      * Constructor for the Country class.
@@ -23,13 +31,42 @@ public class Country {
      * @param population Population of the country
      * @param capital Its capital city
      */
-    public Country(String code, String name, String continent, String region, long population, City capital) {
+    public Country(String code, String name, String continent, String region, long population, City capital) throws Exception {
+        if (population < 0) {
+            throw new Exception("Invalid population provided for country.");
+        }
+
+        if (capital == null) {
+            throw new Exception("No capital city was provided for country.");
+        }
+
         this.code = code;
         this.name = name;
         this.continent = continent;
         this.region = region;
         this.population = population;
         this.capital = capital;
+        this.districts = new ArrayList<District>();
+    }
+
+    /**
+     * Adds a list of districts to the country.
+     *
+     * @param districts List of districts to add.
+     */
+    public void addDistricts(List<District> districts) {
+        for (District district : districts) {
+            this.districts.add(district);
+        }
+    }
+
+    /**
+     * Gets the list of districts in this country.
+     *
+     * @return List of districts.
+     */
+    public List<District> getRegions() {
+        return districts;
     }
 
     /**

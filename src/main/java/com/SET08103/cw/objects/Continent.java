@@ -18,7 +18,11 @@ public class Continent {
      *
      * @param name Name of the continent.
      */
-    public Continent(String name) {
+    public Continent(String name) throws Exception {
+        if (name == "") {
+            throw new Exception("No name provided for continent.");
+        }
+
         this.name = name;
         this.regions = new ArrayList<Region>();
     }
