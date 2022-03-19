@@ -2,7 +2,6 @@ package com.SET08103.cw;
 
 import com.SET08103.cw.objects.*;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.InvalidPropertyException;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,7 @@ public class UnitTests {
         });
 
         assertThrows(Exception.class, () -> {
-            City cityWithNoName = new City(-1, "", "TEST", "testDistrict", 10);
+            City cityWithNoName = new City(1, "", "TEST", "testDistrict", 10);
         });
 
         assertThrows(Exception.class, () -> {
