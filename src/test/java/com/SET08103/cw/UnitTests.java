@@ -49,6 +49,8 @@ public class UnitTests {
         Continent continent = new Continent("testContinent");
 
         assertEquals(continent.getName(), "testContinent");
+        assertNotNull(continent.getRegions());
+        assertEquals(continent.getRegions().stream().count(), 0);
     }
 
     @Test
@@ -93,6 +95,10 @@ public class UnitTests {
             City city = new City(1, "testCity", "TEST", "testDistrict", 10);
             Country countryWithInvalidPopulation = new Country("TEST", "testCountry", "continent", "region", -1, null);
         });
+
+        assertThrows(Exception.class, () -> {
+            Country countryWithInvalidPopulationAndNoCapital = new Country("TEST", "testCountry", "continent", "region", -1);
+        });
     }
 
     @Test
@@ -124,10 +130,81 @@ public class UnitTests {
     }
 
     @Test
+    void testAddCountryDistricts() throws Exception {
+        Country country = new Country("TEST", "testCountry", "continent", "region", 1);
+
+        District district = new District("testRegion");
+        District district2 = new District("testRegion2");
+
+        country.addDistricts(new ArrayList<District>() {
+            {
+                add(district);
+                add(district2);
+            }
+        });
+
+        assertEquals(country.getDistricts().stream().count(), 2);
+        assertEquals(country.getDistricts().get(0), district);
+        assertEquals(country.getDistricts().get(1), district2);
+    }
+
+    @Test
+    void testAddDistrictCities() throws Exception {
+        District district = new District("district");
+
+        City city = new City(1, "testCity", "TEST", "testDistrict", 10);
+        City city2 = new City(2, "testCity2", "TEST", "testDistrict", 10);
+
+        district.addCities(new ArrayList<City>() {
+            {
+                add(city);
+                add(city2);
+            }
+        });
+
+        assertEquals(district.getCities().stream().count(), 2);
+        assertEquals(district.getCities().get(0), city);
+        assertEquals(district.getCities().get(1), city2);
+    }
+
+    @Test
+    void testAddRegionCountries() throws Exception {
+        Region region = new Region("testRegion");
+
+        Country country = new Country("TEST", "testCountry", "continent", "region", 1);
+        Country country2 = new Country("TEST", "testCountry2", "continent", "region", 1);
+
+        region.addCountries(new ArrayList<Country>() {
+            {
+                add(country);
+                add(country2);
+            }
+        });
+
+        assertEquals(region.getCountries().stream().count(), 2);
+        assertEquals(region.getCountries().get(0), country);
+        assertEquals(region.getCountries().get(1), country2);
+    }
+
+    @Test
     void testCityToString() throws Exception {
         City city = new City(1, "testCity", "TEST", "testDistrict", 10);
 
         assertEquals(city.toString(), "City: testCity (1), country code: TEST, district: testDistrict, population: 10");
     }
 
+    @Test
+    void testCountryToStringNoCapital() throws Exception {
+        Country country = new Country("TEST", "testCountry", "continent", "region", 1);
+
+        assertEquals(country.toString(), "testCountry (capital city: [none])");
+    }
+
+    @Test
+    void testCountryToString() throws Exception {
+        City city = new City(1, "testCity", "TEST", "testDistrict", 10);
+        Country country = new Country("TEST", "testCountry", "continent", "region", 1, city);
+
+        assertEquals(country.toString(), "testCountry (capital city: [City: testCity (1), country code: TEST, district: testDistrict, population: 10])");
+    }
 }

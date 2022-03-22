@@ -47,6 +47,28 @@ public class Country implements Population {
     }
 
     /**
+     * Constructor for the Country class without the capital city.
+     *
+     * @param code Country code
+     * @param name Name of the country
+     * @param continent Continent the country is in
+     * @param region Region the country is in
+     * @param population Population of the country
+     */
+    public Country(String code, String name, String continent, String region, long population) throws Exception {
+        if (population < 0) {
+            throw new Exception("Invalid population provided for country.");
+        }
+
+        this.code = code;
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+        this.population = population;
+        this.districts = new ArrayList<District>();
+    }
+
+    /**
      * Adds a list of districts to the country.
      *
      * @param districts List of districts to add.
@@ -62,7 +84,7 @@ public class Country implements Population {
      *
      * @return List of districts.
      */
-    public List<District> getRegions() {
+    public List<District> getDistricts() {
         return districts;
     }
 
