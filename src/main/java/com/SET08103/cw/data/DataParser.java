@@ -3,8 +3,11 @@ package com.SET08103.cw.data;
 import com.SET08103.cw.objects.Continent;
 import com.SET08103.cw.objects.Country;
 import com.SET08103.cw.objects.Region;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.type.CollectionType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,35 @@ public final class DataParser {
         }
 
         return json;
+    }
+
+    public static Object[] fromJson(String json) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        Object[] object = null;
+
+        try {
+            object = objectMapper.readValue(json, Object[].class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return object;
+    }
+
+    public static <T> List<T> fromJson(String json, Class<T> classType) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, classType);
+
+        List<T> ret = null;
+
+        try {
+            ret = objectMapper.readValue(json, listType);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ret;
     }
 
     /**
