@@ -52,7 +52,7 @@ public final class DataHandler {
 
         for (int idx = 0; idx < retryNumber; idx++) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2500);
                 connection = DriverManager.getConnection(String.format(CONNECTION_STRING, host), USER, PASSWORD);
             }
             catch (SQLException | InterruptedException e) {
