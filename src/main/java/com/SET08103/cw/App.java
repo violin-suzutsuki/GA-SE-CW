@@ -1,6 +1,7 @@
 package com.SET08103.cw;
 
 import com.SET08103.cw.data.DataHandler;
+import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.Continent;
 import com.SET08103.cw.objects.Country;
 import com.SET08103.cw.objects.Region;
@@ -28,7 +29,7 @@ public class App {
         long Start = System.currentTimeMillis();
 
         DataHandler dataHandler = DataHandler.getInstance();
-        boolean result = dataHandler.connect(100);
+        boolean result = dataHandler.connect("db:3306", 100);
 
         if (result == false) {
             System.out.println("[-] Failed to connect to the database.");

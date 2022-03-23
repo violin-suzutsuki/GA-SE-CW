@@ -1,5 +1,7 @@
 package com.SET08103.cw.objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,11 @@ public class Region {
      *
      * @param name Name of the region.
      */
-    public Region(String name) {
+    public Region(@JsonProperty("name") String name) throws Exception {
+        if (name == "") {
+            throw new Exception("No name provided for region.");
+        }
+
         this.name = name;
         this.countries = new ArrayList<Country>();
     }
