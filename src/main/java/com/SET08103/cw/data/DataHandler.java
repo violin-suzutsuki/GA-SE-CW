@@ -161,6 +161,12 @@ public final class DataHandler {
         return countries;
     }
 
+    /**
+     * Get a list of cities in a district.
+     *
+     * @param district district to search for
+     * @return list of cities
+     */
     private List<City> getCitiesInDistrict(String district) {
         List<City> cities = new ArrayList<City>();
 
@@ -189,6 +195,12 @@ public final class DataHandler {
         return cities;
     }
 
+    /**
+     * Get list of districts in a country
+     *
+     * @param countryCode country to search for
+     * @return List of districts
+     */
     private List<District> getDistrictsInCountry(String countryCode) {
         List<District> districts = new ArrayList<District>();
 

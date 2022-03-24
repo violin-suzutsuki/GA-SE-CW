@@ -39,20 +39,14 @@ public final class DataParser {
         return json;
     }
 
-    public static Object[] fromJson(String json) {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        Object[] object = null;
-
-        try {
-            object = objectMapper.readValue(json, Object[].class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return object;
-    }
-
+    /**
+     * fromJson class using generics so that a developer can specify the type of list to return.
+     * Without specifying the type, the ObjectMapper class is not able to understand how to map readValue to the List
+     *
+     * @param json to decode
+     * @param classType class to decode to (i.e. Country.class)
+     * @return list of memory instantiated objects
+     */
     public static <T> List<T> fromJson(String json, Class<T> classType) {
         ObjectMapper objectMapper = new ObjectMapper();
         CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, classType);
