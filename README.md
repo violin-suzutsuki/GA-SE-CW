@@ -18,3 +18,17 @@
 #### Issues
 ![open](https://img.shields.io/github/issues/violin-suzutsuki/SET08103)
 ![closed](https://img.shields.io/github/issues-closed/violin-suzutsuki/SET08103)
+
+#### App URL
+
+- website: `http://localhost/app`
+
+#### Command List 
+
+
+| Command                                                   | Description                                    |
+|-----------------------------------------------------------|------------------------------------------------|
+| `docker-compose up --force-recreate --renew-anon-volumes` | Start docker for local development             |
+| `docker-compose -f docker-compose-ci.yml up`              | Start docker for ci (doesn't load spring boot) |
+
+
