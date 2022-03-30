@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-function Sidebar({ setTableData }) {
+function Sidebar({ setTableData, setId }) {
   // setTableData is from the App
   const getData = (id) => {
+    setId(id)
     const responseFromAPI = fetch(`/api/report?reportId=${id}`)
       .then((response) => response.json())
       .then((responseJSON) => {

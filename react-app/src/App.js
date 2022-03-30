@@ -5,11 +5,12 @@ import React from "react";
 
 export default function App() {
   const [data, setData] = useState([]);
+  const [id, setReportId] = useState([]);
 
   return (
     <>
-      <Sidebar setTableData={setData} />
-      <Table tableData={data} />
+      <Sidebar setTableData={setData} setId={setReportId} />
+      <Table tableData={data} reportId={id}/>
     </>
   );
 }
