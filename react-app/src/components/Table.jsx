@@ -1,6 +1,11 @@
-export default function Table({ tableData, reportId }) {
-    return (
-      <div>
+export default function Table({ tableData, reportId, isLoading }) {
+
+  if(isLoading == true) {
+    return (<p>Loading...</p>)
+  }
+
+  return (
+    <div>
       {(() => {
 
         switch (reportId) {
@@ -8,17 +13,22 @@ export default function Table({ tableData, reportId }) {
             return (
               <table>
                 <tr>
-                  <th>1</th>
-                  <th>2</th>
-                  <th>3</th>
-                  <th>4</th>
+                  <th>Code</th>
+                  <th>Name</th>
+                  <th>Continent</th>
+                  <th>Region</th>
+                  <th>Population</th>
+                  <th>Capital</th>
                 </tr>
                 {tableData.map(data => (
+                  
                   <tr>
                     <td>{data.code}</td>
-                    <td>{data.code}</td>
-                    <td>{data.code}</td>
-                    <td>{data.code}</td>
+                    <td>{data.name}</td>
+                    <td>{data.continent}</td>
+                    <td>{data.region}</td>
+                    <td>{data.population}</td>
+                    <td>{data.capital.name}</td>
                   </tr>
                 ))}
               </table>
@@ -50,6 +60,6 @@ export default function Table({ tableData, reportId }) {
             );
         }
       })()}
-    </div>
-    );
+  </div>
+  );
 }
