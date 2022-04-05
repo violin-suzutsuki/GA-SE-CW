@@ -10,6 +10,7 @@ export default function Table({ tableData, reportId, isLoading }) {
         switch (reportId) {
           case '22':
           case '23':
+          case '25':
             return (
               <table>
                 <tr>
@@ -27,7 +28,7 @@ export default function Table({ tableData, reportId, isLoading }) {
                     <td>{data.continent}</td>
                     <td>{data.region}</td>
                     <td>{data.population}</td>
-                    <td>{(data.capital == null) ? "No Data" : data.capital.name}</td>
+                    <td>{(data.capital == null) ? "-" : data.capital.name}</td>
                   </tr>
                 ))}
               </table>
@@ -37,19 +38,23 @@ export default function Table({ tableData, reportId, isLoading }) {
             return (
               <table>
                 <tr>
-                  <th>2</th>
-                  <th>4</th>
-                  <th>6</th>
-                  <th>8</th>
+                  <th>Name</th>
+                  <th>Country</th>
+                  <th>District</th>
+                  <th>Population</th>
                 </tr>
-                {tableData.map(data => (
-                  <tr>
-                    <td>{data.code}</td>
-                    <td>{data.code}</td>
-                    <td>{data.code}</td>
-                    <td>{data.code}</td>
-                  </tr>
-                ))}
+                {tableData.map(data => 
+                  {return data.districts.map(d => 
+                    {return d.cities.map(c => (
+                      <tr>
+                        <td>{c.name}</td>
+                        <td>{data.name}</td>
+                        <td>{c.district}</td>
+                        <td>{c.population}</td>
+                      </tr>
+                    ))}
+                  )}
+                )}
               </table>
             );
 
