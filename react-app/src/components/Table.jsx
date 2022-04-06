@@ -42,22 +42,24 @@ export default function Table({ tableData, reportId, isLoading }) {
                   <th>District</th>
                   <th>Population</th>
                 </tr>
-                {tableData.map(data => 
-                  {return data.districts.map(d => 
-                    {return d.cities.map(c => (
+                {tableData.map(data => {
+                  return data.districts.map(d => {
+                    return d.cities.map(c => (
                       <tr>
                         <td>{c.name}</td>
                         <td>{data.name}</td>
                         <td>{c.district}</td>
                         <td>{c.population}</td>
                       </tr>
-                    ))}
-                  )}
+                    ))
+                  }
+                  )
+                }
                 )}
               </table>
             );
 
-          case '23': 
+          case '23':
             return (
               <table>
                 <tr>
@@ -65,15 +67,17 @@ export default function Table({ tableData, reportId, isLoading }) {
                   <th>Country</th>
                   <th>Population</th>
                 </tr>
-                {tableData.map(data => 
-                  {if(data.capital !== null) {
-                    return(
-                    <tr>
-                      <td>{data.capital.name}</td>
-                      <td>{data.name}</td>
-                      <td>{data.capital.population}</td>
-                    </tr>)
-                  }}
+                {tableData.map(data => {
+                  if (data.capital !== null) {
+                    return (
+                      <tr>
+                        <td>{data.capital.name}</td>
+                        <td>{data.name}</td>
+                        <td>{data.capital.population}</td>
+                      </tr>
+                    )
+                  }
+                }
                 )}
               </table>
             )
