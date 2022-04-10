@@ -5,13 +5,13 @@ import React from "react";
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [id, setReportId] = useState([]);
+  const [inputs, setInputs] = useState({id: "", userInput: ""});
   const [loading, setLoading] = useState(false)
 
   return (
     <>
-      <Sidebar setTableData={setData} setId={setReportId} setLoading={setLoading}/>
-      <Table tableData={data} reportId={id} isLoading={loading}/>
+      <Sidebar setTableData={setData} setInputs={setInputs} inputs={inputs} setLoading={setLoading}/>
+      <Table tableData={data} reportId={inputs.id} isLoading={loading}/>
     </>
   );
 }
