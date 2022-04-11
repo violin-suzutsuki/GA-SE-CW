@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 
 function Sidebar({ setTableData, setId, setLoading }) {
+  const [inputs, setInputs] = useState({id: "", userInput: ""}) 
+
   // setTableData is from the App
   const getData = (id) => {
     setId(id)
@@ -23,7 +25,6 @@ function Sidebar({ setTableData, setId, setLoading }) {
     // userInput.classlist.add();
   };
 
-  const [urlId, setUrlId] = useState();
 
   // const getValueFromSelect = (e) => {
   //   const selectValue = e.target.value;
@@ -33,8 +34,8 @@ function Sidebar({ setTableData, setId, setLoading }) {
   return (
     <>
       SIDEBAR
-      <button onClick={() => getData(urlId)}>Generate</button>
-      <select onChange={(e) => setUrlId(e.target.value)}>
+      <button onClick={() => getData(inputs.id)}>Generate</button>
+      <select onChange={(e) => setInputs(values => ({...values, id: e.target.value}))}>
         <option value="22">22</option>
         <option value="23">23</option>
         <option value="24">24</option>
