@@ -1,4 +1,4 @@
-export default function Table({ tableData, reportId, isLoading }) {
+export default function Table({ tableData, tableTpl, isLoading }) {
 
   if (isLoading == true) {
     return (<p>Loading...</p>)
@@ -7,7 +7,7 @@ export default function Table({ tableData, reportId, isLoading }) {
   return (
     <div>
       {(() => {
-        switch (reportId) {
+        switch (tableTpl) {
           case '22':
           case '25':
             return (

@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-function Sidebar({ setTableData, setId, setLoading }) {
+function Sidebar({ setTableData, setTableTpl, setLoading }) {
   const [inputs, setInputs] = useState({id: "", userInput: ""}) 
 
   // setTableData is from the App
   const getData = (id) => {
-    setId(id)
+    setTableTpl(id)
     setLoading(true)
     const responseFromAPI = fetch(`/api/report?reportId=${id}`)
       .then((response) => response.json())
@@ -26,14 +26,8 @@ function Sidebar({ setTableData, setId, setLoading }) {
   };
 
 
-  // const getValueFromSelect = (e) => {
-  //   const selectValue = e.target.value;
-  //   console.log(selectValue);
-  // };
-
   return (
     <>
-      SIDEBAR
       <button onClick={() => getData(inputs.id)}>Generate</button>
       <select onChange={(e) => setInputs(values => ({...values, id: e.target.value}))}>
         <option value="22">22</option>
