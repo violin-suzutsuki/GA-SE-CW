@@ -22,8 +22,7 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
 
   const hideShowInput = (id) => {
     var input = document.getElementById("input");
-    input.disabled = !customReports.includes(id)
-    console.log(id) 
+    input.disabled = !customReports.includes(id) 
   };
 
   return (
