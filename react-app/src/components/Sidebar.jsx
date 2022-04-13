@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 function Sidebar({ setTableData, setTableTpl, setLoading }) {
-  const [inputs, setInputs] = useState({id: "", userInput: ""}) 
+  const [inputs, setInputs] = useState({id: "1", userInput: ""}) 
 
   // setTableData is from the App
   const getData = (id, userInput) => {
@@ -30,10 +30,21 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
     <>
       <button onClick={() => getData(inputs.id, inputs.userInput)}>Generate</button>
       <select onChange={(e) => setInputs(values => ({...values, id: e.target.value}))}>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
+        <optgroup label="Country Report">
+          <option value="22">22</option>
+        </optgroup>
+        <optgroup label="City Report">
+          <option value="23">23</option>
+        </optgroup>
+        <optgroup label="Capital Report">
+          <option value="24">24</option>
+        </optgroup>
+        <optgroup label="Population Report">
+          <option value="25">25</option>
+        </optgroup>
       </select>
+
+      
       <input onChange={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" />
     </>
   );
