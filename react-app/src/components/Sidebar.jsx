@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function Sidebar({ setTableData, setTableTpl, setLoading }) {
   const [inputs, setInputs] = useState({id: "1", userInput: ""}) 
+  const customReports = ["3", "5", "6", "12", "13", "14", "15", "16", "21", "22", "23"]
 
   // setTableData is from the App
   const getData = (id, userInput) => {
@@ -19,17 +20,16 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
     setLoading(false);
   };
 
-  const hideShowInput = () => {
-    console.log(`hiding showing input`);
-    // const userInput = document.getElementById("userInput");
-    // userInput.classlist.add();
+  const hideShowInput = (id) => {
+    var input = document.getElementById("input");
+    input.disabled = !customReports.includes(id)
+    console.log(id) 
   };
-
 
   return (
     <>
       <button onClick={() => getData(inputs.id, inputs.userInput)}>Generate</button>
-      <select onChange={(e) => setInputs(values => ({...values, id: e.target.value}))}>
+      <select onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
         <optgroup label="Country Report">
           <option value="22">22</option>
         </optgroup>
@@ -45,7 +45,7 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
       </select>
 
       
-      <input onChange={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" />
+      <input onChange={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled/>
     </>
   );
 }
