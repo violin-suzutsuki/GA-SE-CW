@@ -25,9 +25,14 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
     input.disabled = !customReports.includes(id) 
   };
 
+  const handleSubmit = Event => {
+    Event.preventDefault();
+    getData(inputs.id, inputs.userInput)
+    document.getElementById("input").value="";
+  }
+
   return (
-    <>
-      <button onClick={() => getData(inputs.id, inputs.userInput)}>Generate</button>
+    <form onSubmit={handleSubmit}>
       <select onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
         <optgroup label="Country Report">
           <option value="22">22</option>
@@ -42,10 +47,9 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
           <option value="25">25</option>
         </optgroup>
       </select>
-
-      
-      <input onChange={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled/>
-    </>
+      <input onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled/>
+      <button type="submit">Generate</button>
+    </form>
   );
 }
 
