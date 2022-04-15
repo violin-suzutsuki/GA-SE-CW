@@ -33,7 +33,8 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <select onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
+      <select required onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
+        <option selected hidden disabled>Please select a report</option>
         <optgroup label="Country Report">
           <option value="22">22</option>
         </optgroup>
@@ -47,7 +48,7 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
           <option value="25">25</option>
         </optgroup>
       </select>
-      <input onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled/>
+      <input onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" required disabled/>
       <button type="submit">Generate</button>
     </form>
   );
