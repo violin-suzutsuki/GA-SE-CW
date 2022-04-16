@@ -3,7 +3,8 @@ import { useState } from "react";
 
 function Sidebar({ setTableData, setTableTpl, setLoading }) {
   const [inputs, setInputs] = useState({id: "1", userInput: ""}) 
-  const customReports = ["3", "5", "6", "12", "13", "14", "15", "16", "21", "22", "23"]
+  const customizableReports = ["3", "5", "6", "12", "13", "14", "15", "16", "21", "22", "23"]
+  
 
   // setTableData is from the App
   const getData = (id, userInput) => {
@@ -22,7 +23,7 @@ function Sidebar({ setTableData, setTableTpl, setLoading }) {
 
   const hideShowInput = (id) => {
     var input = document.getElementById("input");
-    input.disabled = !customReports.includes(id) 
+    input.disabled = !customizableReports.includes(id) 
   };
 
   const handleSubmit = Event => {
