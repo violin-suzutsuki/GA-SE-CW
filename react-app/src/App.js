@@ -1,4 +1,4 @@
-import Sidebar from "./components/Sidebar";
+import InputsBar from "./components/InputsBar";
 import TableSwitch from "./components/TableSwitch";
 import { useState } from "react";
 import React from "react";
@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <>
-      <Sidebar setTableData={setData} setTableTpl={setTableTpl} setLoading={setLoading}/>
+      <InputsBar setTableData={setData} setTableTpl={setTableTpl} setLoading={setLoading}/>
       <TableSwitch tableData={data} tableTpl={tableTpl} isLoading={loading}/>
     </>
   );
