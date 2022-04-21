@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <>
-      <Header/>
+      <Header id={tableTpl}/>
       <InputsBar setTableData={setData} setTableTpl={setTableTpl} setLoading={setLoading}/>
       <TableSwitch tableData={data} tableTpl={tableTpl} isLoading={loading}/>
     </>
