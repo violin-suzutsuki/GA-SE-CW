@@ -24,3 +24,7 @@ code {
   background-size: 880px;
   background-position: 85% calc(68% + 50px);
 }
+
+.main {
+  min-height: calc(100vh - 136px);
+}

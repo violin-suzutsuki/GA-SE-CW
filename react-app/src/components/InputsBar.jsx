@@ -32,7 +32,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
   }
 
   return (
-    <div className="container mx-auto py-6">
+    <div className="container mx-auto py-12">
       <form className="flex items-center justify-center space-x-4" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label>Report Type:</label>
