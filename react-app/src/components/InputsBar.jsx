@@ -5,7 +5,6 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
   const [inputs, setInputs] = useState({id: "1", userInput: ""}) 
   const customizableReports = ["3", "5", "6", "12", "13", "14", "15", "16", "21", "22", "23"]
   
-
   // setTableData is from the App
   const getData = (id, userInput) => {
     setTableTpl(id)
@@ -32,7 +31,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto py-6">
       <form className="flex items-center justify-center space-x-4" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label>Report Type:</label>
