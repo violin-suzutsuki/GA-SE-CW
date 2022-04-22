@@ -35,7 +35,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
       <form className="flex items-center justify-center space-x-4" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label>Report Type:</label>
-          <select className="select select-bordered w-full max-w-xs" required onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
+          <select className="select w-full max-w-xs border-2 border-indigo-500/100" required onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
             <option selected hidden disabled>Please select a report</option>
             <optgroup label="Country Report">
               <option value="22">22</option>
@@ -54,7 +54,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
         
         <div style={{display: 'none'}} className="mb-4">
           <label>User input:</label>
-          <input className="input input-bordered w-full max-w-xs" onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" required/>
+          <input className="input w-full max-w-xs border-2 border-indigo-500/100" onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" required/>
         </div>
 
         <div className="mt-2">
