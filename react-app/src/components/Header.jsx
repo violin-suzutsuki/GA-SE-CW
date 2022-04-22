@@ -4,7 +4,7 @@ export default function Header({ id }) {
     
     if(id.length == 0) {
         return (
-            <div className='flex flex-col justify-center px-20 py-16 hero-bg'>
+            <div className='flex flex-col justify-center px-20 py-28 hero-bg'>
                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                     No report selected
                 </h1>
@@ -18,7 +18,7 @@ export default function Header({ id }) {
                 {headerData.map(header => {
                     if(header.id == id) {
                         return (
-                            <div className='flex flex-col justify-center px-20 py-16 hero-bg'>
+                            <div className='flex flex-col justify-center px-20 py-28 hero-bg'>
                                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                                     <span className="block xl:inline">{header.reportName}</span>{' '}
                                     <span className="block text-indigo-600">Id - {header.id}</span>
