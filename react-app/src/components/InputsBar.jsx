@@ -21,6 +21,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
 
   const hideShowInput = (id) => {
     var input = document.getElementById("input");
+    input.disabled = !customizableReports.includes(id);
     (customizableReports.includes(id)) ? input.parentElement.style.display = "block" : input.parentElement.style.display = "none" 
   };
 
@@ -54,7 +55,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
         
         <div style={{display: 'none'}} className="mb-4">
           <label>User input:</label>
-          <input className="input w-full max-w-xs border-2 border-indigo-500/100" onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" required/>
+          <input className="input w-full max-w-xs border-2 border-indigo-500/100" onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled required/>
         </div>
 
         <div className="mt-2">
