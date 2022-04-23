@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <>
-      <div className="main">
+      <div className="main px-10 md:px-20">
         <Header id={tableTpl}/>
         <InputsBar setTableData={setData} setTableTpl={setTableTpl} setLoading={setLoading}/>
         <TableSwitch tableData={data} tableTpl={tableTpl} isLoading={loading}/>

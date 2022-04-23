@@ -3,10 +3,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'FooterOne': '#232526',
-        'FooterTwo': '#414345'
+        'EerieBlack': '#232526',
+        'Onyx': '#414345'
       }
     },
+    backgroundSize: {
+      'hero': '880px'
+    }
   },
   plugins: [require("daisyui")],
 }

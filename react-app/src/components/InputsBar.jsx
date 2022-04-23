@@ -33,10 +33,10 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
 
   return (
     <div className="container mx-auto py-12">
-      <form className="flex items-center justify-center space-x-4" onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label>Report Type:</label>
-          <select className="select w-full max-w-xs border-2 border-indigo-500/100" required onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
+      <form className="flex items-center justify-center flex-col md:space-x-4 md:flex-row" onSubmit={handleSubmit}>
+        <div className="mb-4 w-full md:w-auto">
+          <label>Report Type</label>
+          <select className="mt-1 select w-full max-w-full md:max-w-xs font-medium border-2 border-indigo-500/100" required onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
             <option selected hidden disabled>Please select a report</option>
             <optgroup label="Country Report">
               <option value="22">22</option>
@@ -53,13 +53,13 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
           </select>
         </div>
         
-        <div style={{display: 'none'}} className="mb-4">
-          <label>User input:</label>
-          <input className="input w-full max-w-xs border-2 border-indigo-500/100" onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled required/>
+        <div style={{display: 'none'}} className="mb-4 md:w-auto w-full">
+          <label>User input</label>
+          <input className="mt-1 input w-full max-w-full md:max-w-xs border-2 border-indigo-500/100 re" onBlur={(e) => setInputs(values => ({...values, userInput: e.target.value}))} type="text" id="input" disabled required/>
         </div>
 
-        <div className="mt-2">
-          <button className="btn btn-success" type="submit">Generate</button>
+        <div className="mt-2.5 w-full md:w-auto">
+          <button className="btn btn-success w-full md:w-auto" type="submit">Generate</button>
         </div>
 
       </form>
