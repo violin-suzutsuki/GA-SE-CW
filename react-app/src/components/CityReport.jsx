@@ -1,6 +1,6 @@
 export default function CityReport({tableData}) {
     return (
-        <div className="px-20">
+        <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
                 <thead>
                     <tr>

@@ -1,6 +1,6 @@
 export default function CountryReport({tableData}) {
     return (
-        <div className="px-20">
+        <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
                 <thead>
                     <tr>
