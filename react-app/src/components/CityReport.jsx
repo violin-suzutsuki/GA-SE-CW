@@ -1,23 +1,29 @@
 export default function CityReport({tableData}) {
     return (
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Population</th>
-            </tr>
-            {tableData.map(data => {
-                if (data.capital !== null) {
-                return (
+        <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+                <thead>
                     <tr>
-                    <td>{data.capital.name}</td>
-                    <td>{data.name}</td>
-                    <td>{data.capital.population}</td>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Population</th>
                     </tr>
-                )
-                }
-            }
-            )}
-        </table>
+                </thead>
+                <tbody>
+                    {tableData.map(data => {
+                        if (data.capital !== null) {
+                        return (
+                            <tr>
+                            <td>{data.capital.name}</td>
+                            <td>{data.name}</td>
+                            <td>{data.capital.population}</td>
+                            </tr>
+                        )
+                        }
+                    }
+                    )}
+                </tbody>
+            </table>
+        </div>
     )
 }

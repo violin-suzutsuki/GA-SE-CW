@@ -30,7 +30,7 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
 
           default:
             return (
-              <p>Please select a report from the dropdown.</p>
+              <p></p>
             );
         }
       })()}
