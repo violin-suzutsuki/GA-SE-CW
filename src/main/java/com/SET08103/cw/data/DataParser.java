@@ -199,4 +199,31 @@ public final class DataParser {
 
         return cities;
     }
+
+     /**
+     * Get all of the cities in a given district
+     *
+     * @param districtName
+     * @return list of cities
+     */
+    public static List<City> getCitiesInDistrict(String districtName) {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        if (!district.getName().toLowerCase().contains(districtName.toLowerCase())) {
+                            continue;
+                        }
+
+                        cities.addAll(district.getCities());
+                    }
+                }
+            }
+        }
+
+        return cities;
+    }
 }
