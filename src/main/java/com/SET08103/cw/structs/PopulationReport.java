@@ -21,4 +21,20 @@ public class PopulationReport {
     public void setPopulationNotInCities(String str) {
         populationNotInCities = str;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getTotalPopulation() {
+        return totalPopulation;
+    }
+
+    public String getPopulationInCities() {
+        return populationInCities;
+    }
+
+    public String getPopulationNotInCities() {
+        return populationNotInCities;
+    }
 }

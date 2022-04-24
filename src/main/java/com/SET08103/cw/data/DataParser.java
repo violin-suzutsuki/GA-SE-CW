@@ -33,6 +33,7 @@ public final class DataParser {
             json = objectWriter.writeValueAsString(object);
         }
         catch(Exception e) {
+            System.out.println(e.getMessage());
             return "{}";
         }
 
