@@ -4,6 +4,7 @@ import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
+import com.SET08103.cw.structs.PopulationReport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -121,6 +122,14 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 return DataParser.toJson(cities);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/45
+            // The population of people, people living in cities, and people not living in cities in each continent
+            case 45: {
+                List<PopulationReport> populationContinentData = DataParser.getPopulationDataForContinents();
+
+                return DataParser.toJson(populationContinentData);
             }
 
             default: {

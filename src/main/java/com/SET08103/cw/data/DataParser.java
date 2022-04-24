@@ -1,6 +1,7 @@
 package com.SET08103.cw.data;
 
 import com.SET08103.cw.objects.*;
+import com.SET08103.cw.structs.PopulationReport;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -225,5 +226,62 @@ public final class DataParser {
         }
 
         return cities;
+    }
+
+    /**
+     * Get population of continent
+     *
+     * @param continent
+     * @return population
+     */
+    public static long getPopulationOfContinent(Continent continent) {
+        long population = 0;
+
+        for (Region region : continent.getRegions()) {
+            for (Country country : region.getCountries()) {
+                population += country.getPopulation();
+            }
+        }
+
+        return population;
+    }
+
+    /**
+     * Get city population of continent
+     *
+     * @param continent
+     * @return city population
+     */
+    public static long getCityPopulationOfContinent(Continent continent) {
+        long cityPopulation = 0;
+
+        for (Region region : continent.getRegions()) {
+            for (Country country : region.getCountries()) {
+                for (District district : country.getDistricts()) {
+                    for (City city : district.getCities()) {
+                        cityPopulation += city.getPopulation();
+                    }
+                }
+            }
+        }
+
+        return cityPopulation;
+    }
+
+    public static List<PopulationReport> getPopulationDataForContinents() {
+        List<Continent> continents = getContinents();
+        List<PopulationReport> data = new ArrayList<PopulationReport>();
+
+        for (Continent continent : continents) {
+            long totalPopulation = getPopulationOfContinent(continent);
+            long cityPopulation = getCityPopulationOfContinent(continent);
+            long notInCityPopulation = totalPopulation - cityPopulation;
+
+            PopulationReport continentData = new PopulationReport(continent.getName(), totalPopulation);
+            continentData.setPopulationInCities(String.format("%s (%s)", cityPopulation, cityPopulation / totalPopulation));
+            continentData.setPopulationNotInCities(String.format("%s (%s)", notInCityPopulation, notInCityPopulation / totalPopulation));
+        }
+
+        return data;
     }
 }
