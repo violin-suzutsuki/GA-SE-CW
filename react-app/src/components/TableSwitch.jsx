@@ -1,6 +1,7 @@
 import CapitalReport from "./CapitalReport";
 import CountryReport from "./CountryReport";
 import CityReport from "./CityReport";
+import PopulationReport from "./PopulationReport";
 
 export default function TableSwitch({ tableData, tableTpl, isLoading }) {
 
@@ -14,6 +15,7 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
         switch (tableTpl) {
           case '22':
           case '25':
+          case '28':
             return (
               <CountryReport tableData={tableData}/>
             );
@@ -26,6 +28,11 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
           case '23':
             return (
               <CityReport tableData={tableData}/>
+            );
+
+          case '26': 
+            return (
+              <PopulationReport tableData={tableData}/>
             )
 
           default:
