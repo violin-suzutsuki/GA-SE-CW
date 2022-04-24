@@ -56,6 +56,16 @@ public class Controller {
                 return DataParser.toJson(countries);
             }
 
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/25
+            // The top N populated countries in the world where N is provided by the user
+            case 25: {
+                List<Country> countries = DataParser.getCountriesInWorld();
+                countries.sort(Comparator.comparing(Country::getPopulation).reversed());
+
+                int topN = Integer.getInteger(input);
+                return DataParser.toJson(countries.subList(0, topN));
+            }
+
             default: {
                 return "{}";
             }
