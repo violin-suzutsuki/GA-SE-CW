@@ -219,7 +219,7 @@ public final class DataParser {
                     }
 
                     for (District district : country.getDistricts()) {
-                        cities.addAll(countries.getCities());
+                        cities.addAll(district.getCities());
                     }
                 }
             }
