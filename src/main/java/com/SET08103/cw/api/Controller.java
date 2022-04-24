@@ -64,12 +64,7 @@ public class Controller {
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input);
-                System.out.println("int: " + topN + " str: " + input);
-
-                List<Country> spliced = countries.subList(0, topN);
-                System.out.println(spliced.stream().count());
-
-                return DataParser.toJson(spliced);
+                return DataParser.toJson(countries.subList(0, topN));
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/26
@@ -113,7 +108,16 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/31
             // All the cities in a region organised by largest population to smallest
             case 31: {
+                List<City> cities = DataParser.getCitiesInRegion(input);
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
+                return DataParser.toJson(cities);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/31
+            //
+            case 32: {
+                //
             }
 
             default: {

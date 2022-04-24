@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * DataParser.java
@@ -156,11 +157,38 @@ public final class DataParser {
         List<City> cities = new ArrayList<City>();
 
         for (Continent continent : continents) {
-            if (!continent.getName().toLowerCase().contains(continentName)) {
+            if (!continent.getName().toLowerCase().contains(continentName.toLowerCase())) {
                 continue;
             }
 
             for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        cities.addAll(district.getCities());
+                    }
+                }
+            }
+        }
+
+        return cities;
+    }
+
+    /**
+     * Get all of the cities in a given region
+     *
+     * @param regionName
+     * @return list of cities
+     */
+    public static List<City> getCitiesInRegion(String regionName) {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                if (!region.getName().toLowerCase().contains(regionName.toLowerCase())) {
+                    continue;
+                }
+
                 for (Country country : region.getCountries()) {
                     for (District district : country.getDistricts()) {
                         cities.addAll(district.getCities());
