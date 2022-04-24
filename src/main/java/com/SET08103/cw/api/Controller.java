@@ -223,7 +223,7 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/43
             // The top N populated capital cities in a continent where N is provided by the user.
             case 43: {
-                List<City> cities = DataParser.getCapitalCitiesInContinent();
+                List<City> cities = DataParser.getCapitalCitiesInContinent(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
@@ -233,7 +233,7 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/44
             // The top N populated capital cities in a region where N is provided by the user.
             case 44: {
-                List<City> cities = DataParser.getCapitalCitiesInRegion();
+                List<City> cities = DataParser.getCapitalCitiesInRegion(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
