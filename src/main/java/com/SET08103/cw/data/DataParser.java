@@ -303,11 +303,22 @@ public final class DataParser {
         for (Continent continent : continents) {
             long totalPopulation = getPopulationOfContinent(continent);
             long cityPopulation = getCityPopulationOfContinent(continent);
+
+            if (cityPopulation > totalPopulation) {
+                cityPopulation = totalPopulation;
+            }
+
             long notInCityPopulation = totalPopulation - cityPopulation;
 
+            float cityPop = totalPopulation == 0 ? 0 : 100 * ((float)cityPopulation / (float)totalPopulation);
+            cityPop = Math.round(cityPop * 100) / 100;
+
+            float notInCityPop = totalPopulation == 0 ? 0 : 100 * ((float)notInCityPopulation / (float)totalPopulation);
+            notInCityPop = Math.round(notInCityPop * 100) / 100;
+
             PopulationReport continentData = new PopulationReport(continent.getName(), totalPopulation);
-            continentData.setPopulationInCities(String.format("%s (%s%%)", cityPopulation, totalPopulation == 0 ? 0 : 100 * ((float)cityPopulation / (float)totalPopulation)));
-            continentData.setPopulationNotInCities(String.format("%s (%s%%)", notInCityPopulation, totalPopulation == 0 ? 0 : 100 * ((float)notInCityPopulation / (float)totalPopulation)));
+            continentData.setPopulationInCities(String.format("%s (%s%%)", cityPopulation, cityPop));
+            continentData.setPopulationNotInCities(String.format("%s (%s%%)", notInCityPopulation, notInCityPop));
 
             data.add(continentData);
         }
