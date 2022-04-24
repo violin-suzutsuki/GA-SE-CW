@@ -136,10 +136,10 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/34
             // The top N populated cities in the world where N is provided by the user.
             case 34: {
-                List<City> cities = DataParser.getCitiesInWorld(input);
+                List<City> cities = DataParser.getCitiesInWorld();
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
-                int topN = Integer.parseInt(input2);
+                int topN = Integer.parseInt(input);
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
