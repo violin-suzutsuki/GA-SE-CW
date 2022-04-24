@@ -195,19 +195,29 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/40
             // All the capital cities in a continent organised by largest population to smallest
             case 40: {
-                List<City> cities = DataParser.getCapitalCitiesInContinent();
+                List<City> cities = DataParser.getCapitalCitiesInContinent(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 return DataParser.toJson(cities);
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/41
-            // All the capital cities in a region organised by largest to smallest.
+            // All the capital cities in a region organised by largest to smallest
             case 41: {
-                List<City> cities = DataParser.getCapitalCitiesInRegion();
+                List<City> cities = DataParser.getCapitalCitiesInRegion(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 return DataParser.toJson(cities);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/42
+            // The top N populated capital cities in the world where N is provided by the user.
+            case 42: {
+                List<City> cities = DataParser.getCapitalCitiesInWorld();
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
+
+                int topN = Integer.parseInt(input2);
+                return DataParser.toJson(cities.subList(0, topN));
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/45
