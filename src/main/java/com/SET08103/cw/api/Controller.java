@@ -64,7 +64,12 @@ public class Controller {
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input);
-                return DataParser.toJson(countries.subList(0, topN));
+                System.out.println("int: " + topN + " str: " + input);
+
+                List<Country> spliced = countries.subList(0, topN);
+                System.out.println(spliced.stream().count());
+
+                return DataParser.toJson(spliced);
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/26
