@@ -115,9 +115,18 @@ public class Controller {
                 return DataParser.toJson(cities);
             }
 
-            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/31
-            //All the cities in a district organised by largest population to smallest
-            case 32: {
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/32
+            //All the cities in a country organised by largest population to smallest
+            case 32:{
+                List<City> cities = DataParser.getCitiesInCountry(input);
+                cities.sort(Comparator.comparing(Country::getPopulation).reversed());
+
+                return DataParser.toJson(cities);
+            }
+            
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/33
+            // All the cities in a district organised by largest population to smallest
+            case 33: {
                 List<City> cities = DataParser.getCitiesInDistrict(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 

@@ -201,6 +201,33 @@ public final class DataParser {
         return cities;
     }
 
+    /**
+     * Get all of the cities in a given country
+     *
+     * @param countryName
+     * @return list of cities
+     */
+    public static List<City> getCitiesInCountry(String countryName) {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    if (!country.getName().toLowerCase().contains(countryName.toLowerCase())) {
+                        continue;
+                    }
+
+                    for (District district : country.getDistricts()) {
+                        cities.addAll(countries.getCities());
+                    }
+                }
+            }
+        }
+
+        return cities;
+    }
+
      /**
      * Get all of the cities in a given district
      *
