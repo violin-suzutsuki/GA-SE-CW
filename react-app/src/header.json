@@ -101,7 +101,7 @@
 	},
     {
 		"id": "21",
-		"reportName": "Test report heading",
+		"reportName": "The top N populated capital cities in a continent where N is provided by the user",
         "description": "This is some placeholder text that will be changed to a description of the current report"
 	},
     {
