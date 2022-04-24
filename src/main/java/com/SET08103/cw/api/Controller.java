@@ -2,6 +2,7 @@ package com.SET08103.cw.api;
 
 import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
+import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,12 +79,27 @@ public class Controller {
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/28
             // The top N populated countries in a region where N is provided by the user
-            case 27: {
+            case 28: {
                 List<Country> countries = DataParser.getCountriesInRegion(input);
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.getInteger(input2);
                 return DataParser.toJson(countries.subList(0, topN));
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/29
+            // All the cities in the world organised by largest population to smallest
+            case 29: {
+                List<City> cities = DataParser.getCitiesInWorld();
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
+
+                return DataParser.toJson(cities);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/30
+            // All the cities in a continent organised by largest population to smallest
+            case 30: {
+
             }
 
             default: {

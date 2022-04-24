@@ -1,8 +1,6 @@
 package com.SET08103.cw.data;
 
-import com.SET08103.cw.objects.Continent;
-import com.SET08103.cw.objects.Country;
-import com.SET08103.cw.objects.Region;
+import com.SET08103.cw.objects.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,7 +70,7 @@ public final class DataParser {
     }
 
     /**
-     * Get all of the countries in the world sorted by population in descending order
+     * Get all of the countries in the world.
      *
      * @return a list of countries
      */
@@ -87,6 +85,28 @@ public final class DataParser {
         }
 
         return countries;
+    }
+
+    /**
+     * Get all of the cities in the world.
+     *
+     * @return a list of cities
+     */
+    public static List<City> getCitiesInWorld() {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        cities.addAll(district.getCities());
+                    }
+                }
+            }
+        }
+
+        return cities;
     }
 
     /**
