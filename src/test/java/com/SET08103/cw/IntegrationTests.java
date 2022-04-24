@@ -44,7 +44,7 @@ public class IntegrationTests
      */
     @Test
     void testReport22() {
-        String jsonRet = apiController.api(22, "");
+        String jsonRet = apiController.api(22, "", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 239);
@@ -58,7 +58,7 @@ public class IntegrationTests
      */
     @Test
     void testReport23Invalid() {
-        String jsonRet = apiController.api(23, "nodata");
+        String jsonRet = apiController.api(23, "nodata", "");
 
         assertEquals(jsonRet, "[ ]");
     }
@@ -70,7 +70,7 @@ public class IntegrationTests
      */
     @Test
     void testReport23Asia() {
-        String jsonRet = apiController.api(23, "asia");
+        String jsonRet = apiController.api(23, "asia", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 51);
@@ -84,7 +84,7 @@ public class IntegrationTests
      */
     @Test
     void testReport23America() {
-        String jsonRet = apiController.api(23, "america");
+        String jsonRet = apiController.api(23, "america", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 51);
@@ -98,7 +98,7 @@ public class IntegrationTests
      */
     @Test
     void testReport24Nothing() {
-        String jsonRet = apiController.api(24, "nodata");
+        String jsonRet = apiController.api(24, "nodata", "");
 
         assertEquals(jsonRet, "[ ]");
     }
@@ -110,7 +110,7 @@ public class IntegrationTests
      */
     @Test
     void testReport24Australia() {
-        String jsonRet = apiController.api(24, "australia");
+        String jsonRet = apiController.api(24, "australia", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 5);

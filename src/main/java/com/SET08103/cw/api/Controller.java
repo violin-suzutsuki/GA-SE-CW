@@ -99,7 +99,10 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/30
             // All the cities in a continent organised by largest population to smallest
             case 30: {
+                List<City> cities = DataParser.getCitiesInContinent(input);
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
+                return DataParser.toJson(cities);
             }
 
             default: {

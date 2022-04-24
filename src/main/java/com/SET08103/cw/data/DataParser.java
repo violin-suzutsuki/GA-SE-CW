@@ -88,28 +88,6 @@ public final class DataParser {
     }
 
     /**
-     * Get all of the cities in the world.
-     *
-     * @return a list of cities
-     */
-    public static List<City> getCitiesInWorld() {
-        List<Continent> continents = getContinents();
-        List<City> cities = new ArrayList<City>();
-
-        for (Continent continent : continents) {
-            for (Region region : continent.getRegions()) {
-                for (Country country : region.getCountries()) {
-                    for (District district : country.getDistricts()) {
-                        cities.addAll(district.getCities());
-                    }
-                }
-            }
-        }
-
-        return cities;
-    }
-
-    /**
      * Get all of the countries in a continent sorted by population in descending order
      *
      * @param continentName continent name to search for, non caps-sensitive
@@ -143,5 +121,54 @@ public final class DataParser {
         }
 
         return countries;
+    }
+
+    /**
+     * Get all of the cities in the world.
+     *
+     * @return a list of cities
+     */
+    public static List<City> getCitiesInWorld() {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        cities.addAll(district.getCities());
+                    }
+                }
+            }
+        }
+
+        return cities;
+    }
+
+    /**
+     * Get all of the cities in a given continent
+     *
+     * @param continentName
+     * @return list of cities
+     */
+    public static List<City> getCitiesInContinent(String continentName) {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            if (!continent.getName().toLowerCase().contains(continentName)) {
+                continue;
+            }
+
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        cities.addAll(district.getCities());
+                    }
+                }
+            }
+        }
+
+        return cities;
     }
 }
