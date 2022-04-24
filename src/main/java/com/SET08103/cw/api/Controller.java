@@ -115,9 +115,12 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/31
-            //
+            //All the cities in a district organised by largest population to smallest
             case 32: {
-                //
+                List<City> cities = DataParser.getCitiesInDistrict(input);
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
+
+                return DataParser.toJson(cities);
             }
 
             default: {
