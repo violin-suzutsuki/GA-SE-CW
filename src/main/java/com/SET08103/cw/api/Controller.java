@@ -119,7 +119,7 @@ public class Controller {
             //All the cities in a country organised by largest population to smallest
             case 32:{
                 List<City> cities = DataParser.getCitiesInCountry(input);
-                cities.sort(Comparator.comparing(Country::getPopulation).reversed());
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 return DataParser.toJson(cities);
             }
