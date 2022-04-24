@@ -299,7 +299,7 @@ public final class DataParser {
      *
      * @return list of capital cities
      */
-    public static List<City> getCapitalCitiesInContinent(string continentName) {
+    public static List<City> getCapitalCitiesInContinent(String continentName) {
         List<Continent> continents = getContinents();
         List<City> cities = new ArrayList<City>();
 
@@ -327,7 +327,7 @@ public final class DataParser {
      *
      * @return list of capital cities
      */
-    public static List<City> getCapitalCitiesInRegion(string regionName) {
+    public static List<City> getCapitalCitiesInRegion(String regionName) {
         List<Continent> continents = getContinents();
         List<City> cities = new ArrayList<City>();
 
