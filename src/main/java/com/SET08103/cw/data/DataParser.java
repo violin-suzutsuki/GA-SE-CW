@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -61,6 +62,19 @@ public final class DataParser {
         }
 
         return ret;
+    }
+
+    /**
+     * Round to certain number of decimals
+     *
+     * @param d
+     * @param decimalPlace
+     * @return
+     */
+    private static float roundFloat(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 
     /**
@@ -257,6 +271,30 @@ public final class DataParser {
     }
 
     /**
+     * get all capital cities in the world
+     *
+     * @return list of capital cities
+     */
+    public static List<City> getCapitalCitiesInWorld() {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    if (country.getCapital() == null) {
+                        continue;
+                    }
+
+                    cities.add(country.getCapital());
+                }
+            }
+        }
+
+        return cities;
+    }
+
+    /**
      * Get population of continent
      *
      * @param continent
@@ -296,6 +334,11 @@ public final class DataParser {
         return cityPopulation;
     }
 
+    /**
+     * Get population data for all continents
+     *
+     * @return list of populationdata
+     */
     public static List<PopulationReport> getPopulationDataForContinents() {
         List<Continent> continents = getContinents();
         List<PopulationReport> data = new ArrayList<PopulationReport>();
@@ -311,10 +354,10 @@ public final class DataParser {
             long notInCityPopulation = totalPopulation - cityPopulation;
 
             float cityPop = totalPopulation == 0 ? 0 : 100 * ((float)cityPopulation / (float)totalPopulation);
-            cityPop = Math.round(cityPop * 100) / 100;
+            cityPop = roundFloat(cityPop, 2);
 
             float notInCityPop = totalPopulation == 0 ? 0 : 100 * ((float)notInCityPopulation / (float)totalPopulation);
-            notInCityPop = Math.round(notInCityPop * 100) / 100;
+            notInCityPop = roundFloat(notInCityPop, 2);
 
             PopulationReport continentData = new PopulationReport(continent.getName(), totalPopulation);
             continentData.setPopulationInCities(String.format("%s (%s%%)", cityPopulation, cityPop));
