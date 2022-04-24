@@ -295,6 +295,34 @@ public final class DataParser {
     }
 
     /**
+     * get all capital cities in the continent
+     *
+     * @return list of capital cities
+     */
+    public static List<City> getCapitalCitiesInContinent(string continentName) {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            if (!continent.getName().toLowerCase().contains(continentName.toLowerCase())) {
+                continue;
+            } 
+
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    if (country.getCapital() == null) {
+                        continue;
+                    }
+
+                    cities.add(country.getCapital());
+                }
+            }
+        }
+
+        return cities;
+    }
+
+    /**
      * Get population of continent
      *
      * @param continent

@@ -174,7 +174,7 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/38
-            // The top N populated cities in a district where N is provided by the user.
+            // The top N populated cities in a district where N is provided by the user
             case 38: {
                 List<City> cities = DataParser.getCitiesInDistrict(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
@@ -184,9 +184,18 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/39
-            // All the capital cities in the world organised by largest population to smallest.
+            // All the capital cities in the world organised by largest population to smallest
             case 39: {
                 List<City> cities = DataParser.getCapitalCitiesInWorld();
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
+
+                return DataParser.toJson(cities);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/40
+            // All the capital cities in a continent organised by largest population to smallest
+            case 40: {
+                List<City> cities = DataParser.getCapitalCitiesInContinent();
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 return DataParser.toJson(cities);
