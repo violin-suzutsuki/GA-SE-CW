@@ -76,7 +76,7 @@
 	},
     {
 		"id": "16",
-		"reportName": "test",
+		"reportName": "The top N populated cities in a district where N is provided by the user",
         "description": "This is some placeholder text that will be changed to a description of the current report"
 	},
     {
