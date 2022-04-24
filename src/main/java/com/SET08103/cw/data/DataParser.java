@@ -295,7 +295,7 @@ public final class DataParser {
     }
 
     /**
-     * get all capital cities in the continent
+     * get all capital cities in a continent
      *
      * @return list of capital cities
      */
@@ -309,6 +309,34 @@ public final class DataParser {
             } 
 
             for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    if (country.getCapital() == null) {
+                        continue;
+                    }
+
+                    cities.add(country.getCapital());
+                }
+            }
+        }
+
+        return cities;
+    }
+
+    /**
+     * get all capital cities in a region
+     *
+     * @return list of capital cities
+     */
+    public static List<City> getCapitalCitiesInRegion(string regionName) {
+        List<Continent> continents = getContinents();
+        List<City> cities = new ArrayList<City>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                if (!region.getName().toLowerCase().contains(regionName.toLowerCase())) {
+                    continue;
+                } 
+
                 for (Country country : region.getCountries()) {
                     if (country.getCapital() == null) {
                         continue;

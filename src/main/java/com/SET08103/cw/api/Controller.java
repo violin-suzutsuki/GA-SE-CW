@@ -200,7 +200,16 @@ public class Controller {
 
                 return DataParser.toJson(cities);
             }
-            
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/41
+            // All the capital cities in a region organised by largest to smallest.
+            case 41: {
+                List<City> cities = DataParser.getCapitalCitiesInRegion();
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
+
+                return DataParser.toJson(cities);
+            }
+
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/45
             // The population of people, people living in cities, and people not living in cities in each continent
             case 45: {
