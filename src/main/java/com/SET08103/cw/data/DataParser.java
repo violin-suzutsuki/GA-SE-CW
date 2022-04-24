@@ -306,8 +306,8 @@ public final class DataParser {
             long notInCityPopulation = totalPopulation - cityPopulation;
 
             PopulationReport continentData = new PopulationReport(continent.getName(), totalPopulation);
-            continentData.setPopulationInCities(String.format("%s (%s%)", cityPopulation, totalPopulation == 0 ? 0 : 100 * ((float)cityPopulation / (float)totalPopulation)));
-            continentData.setPopulationNotInCities(String.format("%s (%s%)", notInCityPopulation, totalPopulation == 0 ? 0 : 100 * ((float)notInCityPopulation / (float)totalPopulation)));
+            continentData.setPopulationInCities(String.format("%s (%s%%)", cityPopulation, totalPopulation == 0 ? 0 : 100 * ((float)cityPopulation / (float)totalPopulation)));
+            continentData.setPopulationNotInCities(String.format("%s (%s%%)", notInCityPopulation, totalPopulation == 0 ? 0 : 100 * ((float)notInCityPopulation / (float)totalPopulation)));
 
             data.add(continentData);
         }
