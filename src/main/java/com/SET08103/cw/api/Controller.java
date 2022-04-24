@@ -63,7 +63,7 @@ public class Controller {
                 List<Country> countries = DataParser.getCountriesInWorld();
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
-                int topN = Integer.getInteger(input);
+                int topN = Integer.parseInt(input);
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
@@ -73,7 +73,7 @@ public class Controller {
                 List<Country> countries = DataParser.getCountriesInContinent(input);
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
-                int topN = Integer.getInteger(input2);
+                int topN = Integer.parseInt(input2);
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
@@ -83,7 +83,7 @@ public class Controller {
                 List<Country> countries = DataParser.getCountriesInRegion(input);
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
-                int topN = Integer.getInteger(input2);
+                int topN = Integer.parseInt(input2);
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
@@ -103,6 +103,12 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 return DataParser.toJson(cities);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/31
+            // All the cities in a region organised by largest population to smallest
+            case 31: {
+
             }
 
             default: {
