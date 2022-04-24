@@ -25,7 +25,7 @@ public class Controller {
      * @return a json string
      */
     @RequestMapping("/report")
-    public String api(@RequestParam(value="reportId") Integer id, @RequestParam(value="userInput", defaultValue="") String input) {
+    public String api(@RequestParam(value="reportId") Integer id, @RequestParam(value="userInput", defaultValue="") String input, @RequestParam(value="userInput2", defaultValue="") String input2) {
         DataHandler dataHandler = DataHandler.getInstance();
 
         switch (id) {
@@ -63,6 +63,26 @@ public class Controller {
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.getInteger(input);
+                return DataParser.toJson(countries.subList(0, topN));
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/26
+            // The top N populated countries in a continent where N is provided by the user
+            case 26: {
+                List<Country> countries = DataParser.getCountriesInContinent(input);
+                countries.sort(Comparator.comparing(Country::getPopulation).reversed());
+
+                int topN = Integer.getInteger(input2);
+                return DataParser.toJson(countries.subList(0, topN));
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/28
+            // The top N populated countries in a region where N is provided by the user
+            case 27: {
+                List<Country> countries = DataParser.getCountriesInRegion(input);
+                countries.sort(Comparator.comparing(Country::getPopulation).reversed());
+
+                int topN = Integer.getInteger(input2);
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
