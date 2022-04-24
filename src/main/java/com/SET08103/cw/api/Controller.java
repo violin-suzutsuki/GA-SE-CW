@@ -230,6 +230,16 @@ public class Controller {
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/44
+            // The top N populated capital cities in a region where N is provided by the user.
+            case 44: {
+                List<City> cities = DataParser.getCapitalCitiesInRegion(input);
+                cities.sort(Comparator.comparing(City::getPopulation).reversed());
+
+                int topN = Integer.parseInt(input2);
+                return DataParser.toJson(cities.subList(0, topN));
+            }
+
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/45
             // The population of people, people living in cities, and people not living in cities in each continent
             case 45: {
