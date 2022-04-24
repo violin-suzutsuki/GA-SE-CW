@@ -16,7 +16,7 @@
 	},
     {
 		"id": "4",
-		"reportName": "test",
+		"reportName": "The top N populated countries in the world where N is provided by the user",
         "description": "This is some placeholder text that will be changed to a description of the current report"
 	},
     {
