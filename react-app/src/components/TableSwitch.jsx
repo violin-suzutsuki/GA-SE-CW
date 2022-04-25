@@ -54,12 +54,12 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
               <PopulationReportContinent tableData={tableData}/>
             );
 
-          case '29': 
+          case '24': 
             return (
               <PopulationReportRegion tableData={tableData}/>
             );
 
-          case '45': 
+          case '25': 
             return (
               <PopulationReportCountry tableData={tableData}/>
             );

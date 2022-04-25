@@ -182,6 +182,22 @@
 		"category": "Population",
 		"labelOneText": "",
 		"labelTwoText": ""
+	},
+	{
+		"id": "24",
+		"reportName": "No. of people living in/not in cities in each region",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "25",
+		"reportName": "No. of people living in/not in cities in each country",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
 	}
     
 ]
