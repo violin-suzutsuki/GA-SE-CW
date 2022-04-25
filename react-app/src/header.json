@@ -3,197 +3,162 @@
 		"id": "1",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "",
+		"labelTwoText": ""
 	},
     {
 		"id": "2",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
 		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelTwoText": ""
 	},
     {
 		"id": "3",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "District",
+		"labelTwoText": ""
 	},
     {
 		"id": "4",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "No. of entries to return",
+		"labelTwoText": ""
 	},
     {
 		"id": "5",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
 		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "6",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "District",
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "7",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "",
+		"labelTwoText": ""
 	},
     {
 		"id": "8",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
 		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelTwoText": ""
 	},
     {
 		"id": "9",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "Region",
+		"labelTwoText": ""
 	},
     {
 		"id": "10",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "Country",
+		"labelTwoText": ""
 	},
     {
 		"id": "11",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "District",
+		"labelTwoText": ""
 	},
     {
 		"id": "12",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "No. of entries to return",
+		"labelTwoText": ""
 	},
     {
 		"id": "13",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
 		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "14",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "Region",
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "15",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "Country",
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "16",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "District",
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "17",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "",
+		"labelTwoText": ""
 	},
     {
 		"id": "18",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
 		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelTwoText": ""
 	},
     {
 		"id": "19",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "Region",
+		"labelTwoText": ""
 	},
     {
 		"id": "20",
 		"reportName": "test",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "No. of entries to return",
+		"labelTwoText": ""
 	},
     {
 		"id": "21",
 		"reportName": "Test report heading",
         "description": "This is some placeholder text that will be changed to a description of the current report",
 		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "22",
 		"reportName": "Test report heading",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
+		"labelOneText": "Region",
+		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "23",
 		"reportName": "Test report heading",
         "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
-	},
-    {
-		"id": "24",
-		"reportName": "Test report heading",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
-	},
-    {
-		"id": "25",
-		"reportName": "test",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
-	},
-	{
-		"id": "26",
-		"reportName": "test",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
-	},
-	{
-		"id": "45",
-		"reportName": "test",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
-	},
-	{
-		"id": "28",
-		"reportName": "test",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
-		"labelOneText": "Continent",
-		"labelTwoText": "Top N"
-
+		"labelOneText": "",
+		"labelTwoText": ""
 	}
+    
 ]

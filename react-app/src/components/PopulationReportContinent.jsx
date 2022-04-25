@@ -1,4 +1,4 @@
-export default function PopulationReport(tableData) {
+export default function PopulationReport({ tableData }) {
     return (
         <div className="overflow-x-auto">
             <table className="table table-zebra w-full">

@@ -15,24 +15,41 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
     <div>
       {(() => {
         switch (tableTpl) {
-          case '22':
-          case '25':
-          case '28':
+          case '1':
+          case '2':
+          case '3':
+          case '4':
+          case '5':
+          case '6':
             return (
               <CountryReport tableData={tableData}/>
             );
 
-          case '24':
-            return (
-              <CapitalReport tableData={tableData}/>
-            );
-
-          case '23':
+          case '7':
+          case '8':
+          case '9':
+          case '10':
+          case '11':
+          case '12':
+          case '13':
+          case '14':
+          case '15':
+          case '16':
             return (
               <CityReport tableData={tableData}/>
             );
 
-          case '26': 
+          case '17':
+          case '18':
+          case '19':
+          case '20':
+          case '21':
+          case '22':
+            return (
+              <CapitalReport tableData={tableData}/>
+            );
+
+          case '23': 
             return (
               <PopulationReportContinent tableData={tableData}/>
             );
@@ -49,7 +66,7 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
 
           default:
             return (
-              <p></p>
+              <p>Nothing found</p>
             );
         }
       })()}

@@ -6,23 +6,20 @@ export default function CapitalReport({ tableData }) {
                     <tr>
                         <th>Name</th>
                         <th>Country</th>
-                        <th>District</th>
                         <th>Population</th>
                     </tr>
                 </thead>
                 <tbody>
                     {tableData.map(data => {
-                        return data.districts.map(d => {
-                            return d.cities.map(c => (
-                                <tr>
-                                    <td>{c.name}</td>
-                                    <td>{data.name}</td>
-                                    <td>{c.district}</td>
-                                    <td>{c.population}</td>
-                                </tr>
-                            ))
-                        }
+                        if (data !== null) {
+                        return (
+                            <tr>
+                                <td>{data.name}</td>
+                                <td>{data.countryCode}</td>
+                                <td>{data.population}</td>
+                            </tr>
                         )
+                        }
                     }
                     )}
                 </tbody>
