@@ -1,162 +1,185 @@
 [
 	{
 		"id": "1",
-		"reportName": "test",
+		"reportName": "Countries organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Country",
 		"labelOneText": "",
 		"labelTwoText": ""
 	},
     {
 		"id": "2",
-		"reportName": "test",
+		"reportName": "Countries in a continent organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Country",
 		"labelOneText": "Continent",
 		"labelTwoText": ""
 	},
     {
 		"id": "3",
-		"reportName": "test",
+		"reportName": "Countries in a region organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Country",
 		"labelOneText": "District",
 		"labelTwoText": ""
 	},
     {
 		"id": "4",
-		"reportName": "test",
+		"reportName": "Top N most populated countries",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Country",
 		"labelOneText": "No. of entries to return",
 		"labelTwoText": ""
 	},
     {
 		"id": "5",
-		"reportName": "test",
+		"reportName": "Top N most populated countries in a continent",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Country",
 		"labelOneText": "Continent",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "6",
-		"reportName": "test",
+		"reportName": "Top N most populated countries in a region",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Country",
 		"labelOneText": "District",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "7",
-		"reportName": "test",
+		"reportName": "Cities organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "",
 		"labelTwoText": ""
 	},
     {
 		"id": "8",
-		"reportName": "test",
+		"reportName": "Cities in a continent organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "Continent",
 		"labelTwoText": ""
 	},
     {
 		"id": "9",
-		"reportName": "test",
+		"reportName": "Cities in a region organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "Region",
 		"labelTwoText": ""
 	},
     {
 		"id": "10",
-		"reportName": "test",
+		"reportName": "Cities in a Country organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "Country",
 		"labelTwoText": ""
 	},
     {
 		"id": "11",
-		"reportName": "test",
+		"reportName": "Cities in a district organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "District",
 		"labelTwoText": ""
 	},
     {
 		"id": "12",
-		"reportName": "test",
+		"reportName": "Top N populated cities",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "No. of entries to return",
 		"labelTwoText": ""
 	},
     {
 		"id": "13",
-		"reportName": "test",
+		"reportName": "Top N populated cities in a continent",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "Continent",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "14",
-		"reportName": "test",
+		"reportName": "Top N populated cities in a region",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "Region",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "15",
-		"reportName": "test",
+		"reportName": "Top N populated cities in a country",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "Country",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "16",
-		"reportName": "test",
+		"reportName": "Top N populated cities in a district",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "City",
 		"labelOneText": "District",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "17",
-		"reportName": "test",
+		"reportName": "Capital cities organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Capital City",
 		"labelOneText": "",
 		"labelTwoText": ""
 	},
     {
 		"id": "18",
-		"reportName": "test",
+		"reportName": "Capital cities in a continent organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Capital City",
 		"labelOneText": "Continent",
 		"labelTwoText": ""
 	},
     {
 		"id": "19",
-		"reportName": "test",
+		"reportName": "Capital cities in a region organized by population (DESC)",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Capital City",
 		"labelOneText": "Region",
 		"labelTwoText": ""
 	},
     {
 		"id": "20",
-		"reportName": "test",
+		"reportName": "Top N populated capital cities",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Capital City",
 		"labelOneText": "No. of entries to return",
 		"labelTwoText": ""
 	},
     {
 		"id": "21",
-		"reportName": "Test report heading",
+		"reportName": "Top N populated capital cities in a continent",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Capital City",
 		"labelOneText": "Continent",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "22",
-		"reportName": "Test report heading",
+		"reportName": "Top N populated capital cities in a region",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Capital City",
 		"labelOneText": "Region",
 		"labelTwoText": "No. of entries to return"
 	},
     {
 		"id": "23",
-		"reportName": "Test report heading",
+		"reportName": "No. of people living in/not in cities in each continent",
         "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
 		"labelOneText": "",
 		"labelTwoText": ""
 	}
