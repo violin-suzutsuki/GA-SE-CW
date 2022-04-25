@@ -351,6 +351,32 @@ public final class DataParser {
     }
 
     /**
+     * gets population of country
+     *
+     * @param country
+     * @return population
+     */
+    public static long getPopulationOfCountry(Country country) {
+        return country.getPopulation();
+    }
+
+    /**
+     * Get population of region
+     *
+     * @param region
+     * @return population
+     */
+    public static long getPopulationOfRegion(Region region) {
+        long population = 0;
+
+        for (Country country : region.getCountries()) {
+            population += country.getPopulation();
+        }
+
+        return population;
+    }
+
+    /**
      * Get population of continent
      *
      * @param continent
@@ -360,12 +386,44 @@ public final class DataParser {
         long population = 0;
 
         for (Region region : continent.getRegions()) {
-            for (Country country : region.getCountries()) {
-                population += country.getPopulation();
-            }
+            population += getPopulationOfRegion(region);
         }
 
         return population;
+    }
+
+    /**
+     * gets city population of country
+     *
+     * @param country
+     * @return city population
+     */
+    public static long getCityPopulationOfCountry(Country country) {
+        long cityPopulation = 0;
+
+        for (District district : country.getDistricts()) {
+            for (City city : district.getCities()) {
+                cityPopulation += city.getPopulation();
+            }
+        }
+
+        return cityPopulation;
+    }
+
+    /**
+     * Get city population of region
+     *
+     * @param region
+     * @return city population
+     */
+    public static long getCityPopulationOfRegion(Region region) {
+        long cityPopulation = 0;
+
+        for (Country country : region.getCountries()) {
+            cityPopulation += getPopulationOfCountry(country);
+        }
+
+        return cityPopulation;
     }
 
     /**
@@ -378,16 +436,38 @@ public final class DataParser {
         long cityPopulation = 0;
 
         for (Region region : continent.getRegions()) {
-            for (Country country : region.getCountries()) {
-                for (District district : country.getDistricts()) {
-                    for (City city : district.getCities()) {
-                        cityPopulation += city.getPopulation();
-                    }
-                }
-            }
+            cityPopulation += getCityPopulationOfRegion(region);
         }
 
         return cityPopulation;
+    }
+
+    /**
+     * gets population data based on name, totalPopulation, cityPopulation
+     *
+     * @param name
+     * @param totalPopulation
+     * @param cityPopulation
+     * @return
+     */
+    public static PopulationReport getPopReport(String name, long totalPopulation, long cityPopulation) {
+        if (cityPopulation > totalPopulation) {
+            cityPopulation = totalPopulation;
+        }
+
+        long notInCityPopulation = totalPopulation - cityPopulation;
+
+        float cityPop = totalPopulation == 0 ? 0 : 100 * ((float) cityPopulation / (float) totalPopulation);
+        cityPop = roundFloat(cityPop, 2);
+
+        float notInCityPop = totalPopulation == 0 ? 0 : 100 * ((float) notInCityPopulation / (float) totalPopulation);
+        notInCityPop = roundFloat(notInCityPop, 2);
+
+        PopulationReport data = new PopulationReport(name, totalPopulation);
+        data.setPopulationInCities(String.format("%s (%s%%)", cityPopulation, cityPop));
+        data.setPopulationNotInCities(String.format("%s (%s%%)", notInCityPopulation, notInCityPop));
+
+        return data;
     }
 
     /**
@@ -403,23 +483,50 @@ public final class DataParser {
             long totalPopulation = getPopulationOfContinent(continent);
             long cityPopulation = getCityPopulationOfContinent(continent);
 
-            if (cityPopulation > totalPopulation) {
-                cityPopulation = totalPopulation;
+            data.add(getPopReport(continent.getName(), totalPopulation, cityPopulation));
+        }
+
+        return data;
+    }
+
+    /**
+     * get population data for regions
+     * @return list of data
+     */
+    public static List<PopulationReport> getPopulationDataForRegions() {
+        List<Continent> continents = getContinents();
+        List<PopulationReport> data = new ArrayList<PopulationReport>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                long totalPopulation = getPopulationOfRegion(region);
+                long cityPopulation = getCityPopulationOfRegion(region);
+
+                data.add(getPopReport(region.getName(), totalPopulation, cityPopulation));
             }
+        }
 
-            long notInCityPopulation = totalPopulation - cityPopulation;
+        return data;
+    }
 
-            float cityPop = totalPopulation == 0 ? 0 : 100 * ((float)cityPopulation / (float)totalPopulation);
-            cityPop = roundFloat(cityPop, 2);
+    /**
+     * get population data for countries
+     *
+     * @return list of data
+     */
+    public static List<PopulationReport> getPopulationDataForCountries() {
+        List<Continent> continents = getContinents();
+        List<PopulationReport> data = new ArrayList<PopulationReport>();
 
-            float notInCityPop = totalPopulation == 0 ? 0 : 100 * ((float)notInCityPopulation / (float)totalPopulation);
-            notInCityPop = roundFloat(notInCityPop, 2);
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    long totalPopulation = getPopulationOfCountry(country);
+                    long cityPopulation = getCityPopulationOfCountry(country);
 
-            PopulationReport continentData = new PopulationReport(continent.getName(), totalPopulation);
-            continentData.setPopulationInCities(String.format("%s (%s%%)", cityPopulation, cityPop));
-            continentData.setPopulationNotInCities(String.format("%s (%s%%)", notInCityPopulation, notInCityPop));
-
-            data.add(continentData);
+                    data.add(getPopReport(country.getName(), totalPopulation, cityPopulation));
+                }
+            }
         }
 
         return data;
