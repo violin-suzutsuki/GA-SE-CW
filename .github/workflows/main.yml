@@ -39,8 +39,8 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          flags: IntegrationTests
-          directory: ./target/surefire-reports
+          directory: ./target/site/jacoco
+          flags: Integration Tests
           verbose: true
 
   build:
