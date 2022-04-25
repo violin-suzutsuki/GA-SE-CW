@@ -64,7 +64,7 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
               <option value="24">24</option>
             </optgroup>
             <optgroup label="Population Report">
-              <option value="25">25</option>
+              <option value="45">45</option>
             </optgroup>
           </select>
         </div>
