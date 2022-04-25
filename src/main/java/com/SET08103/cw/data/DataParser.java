@@ -608,6 +608,29 @@ public final class DataParser {
     }
 
     /**
+     * get basic pop data of country
+     * @return list of data
+     */
+    public static List<PopulationReportBasic> getPopulationBasicOfCountry(String countryName) {
+        List<Continent> continents = getContinents();
+        List<PopulationReportBasic> data = new ArrayList<PopulationReportBasic>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    if (!country.getName().toLowerCase().contains(countryName.toLowerCase())) {
+                        continue;
+                    }
+
+                    data.add(new PopulationReportBasic(country.getName(), getPopulationOfCountry(country)));
+                }
+            }
+        }
+
+        return data;
+    }
+
+    /**
      * get basic pop data of district
      * @return list of data
      */

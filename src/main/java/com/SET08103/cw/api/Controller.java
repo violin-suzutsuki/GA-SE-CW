@@ -283,7 +283,9 @@ public class Controller {
                 return DataParser.toJson(populationBasicData);
             }
             case 29: {
-                
+                List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfCountry(input);
+
+                return DataParser.toJson(populationBasicData);
             }
             case 30: {
                 List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfDistrict(input);
