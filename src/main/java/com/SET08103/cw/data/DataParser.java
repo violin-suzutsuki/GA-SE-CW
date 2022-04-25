@@ -2,6 +2,7 @@ package com.SET08103.cw.data;
 
 import com.SET08103.cw.objects.*;
 import com.SET08103.cw.structs.PopulationReport;
+import com.SET08103.cw.structs.PopulationReportBasic;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -393,6 +394,22 @@ public final class DataParser {
     }
 
     /**
+     * gets city population of district
+     *
+     * @param district
+     * @return city population
+     */
+    public static long getPopulationOfDistrict(District district) {
+        long cityPopulation = 0;
+
+        for (City city : district.getCities()) {
+            cityPopulation += city.getPopulation();
+        }
+
+        return cityPopulation;
+    }
+
+    /**
      * gets city population of country
      *
      * @param country
@@ -525,6 +542,116 @@ public final class DataParser {
                     long cityPopulation = getCityPopulationOfCountry(country);
 
                     data.add(getPopReport(country.getName(), totalPopulation, cityPopulation));
+                }
+            }
+        }
+
+        return data;
+    }
+
+    /**
+     * get basic pop data of world
+     * @return list of data
+     */
+    public static List<PopulationReportBasic> getPopulationBasicOfWorld() {
+        List<PopulationReportBasic> data = new ArrayList<PopulationReportBasic>();
+
+        long population = 0;
+
+        for (PopulationReport data2 : getPopulationDataForContinents()) {
+            population += data2.getTotalPopulation();
+        }
+
+        data.add(new PopulationReportBasic("world", population));
+
+        return data;
+    }
+
+    /**
+     * get basic pop data of continent
+     * @return list of data
+     */
+    public static List<PopulationReportBasic> getPopulationBasicOfContinent(String continentName) {
+        List<Continent> continents = getContinents();
+        List<PopulationReportBasic> data = new ArrayList<PopulationReportBasic>();
+
+        for (Continent continent : continents) {
+            if (!continent.getName().toLowerCase().contains(continentName.toLowerCase())) {
+                continue;
+            }
+
+            data.add(new PopulationReportBasic(continent.getName(), getPopulationOfContinent(continent)));
+        }
+
+        return data;
+    }
+
+    /**
+     * get basic pop data of region
+     * @return list of data
+     */
+    public static List<PopulationReportBasic> getPopulationBasicOfRegion(String regionName) {
+        List<Continent> continents = getContinents();
+        List<PopulationReportBasic> data = new ArrayList<PopulationReportBasic>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                if (!region.getName().toLowerCase().contains(regionName.toLowerCase())) {
+                    continue;
+                }
+
+                data.add(new PopulationReportBasic(region.getName(), getPopulationOfRegion(region)));
+            }
+        }
+
+        return data;
+    }
+
+    /**
+     * get basic pop data of district
+     * @return list of data
+     */
+    public static List<PopulationReportBasic> getPopulationBasicOfDistrict(String districtName) {
+        List<Continent> continents = getContinents();
+        List<PopulationReportBasic> data = new ArrayList<PopulationReportBasic>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        if (!district.getName().toLowerCase().contains(districtName.toLowerCase())) {
+                            continue;
+                        }
+
+                        data.add(new PopulationReportBasic(district.getName(), getPopulationOfDistrict(district)));
+                    }
+                }
+            }
+        }
+
+        return data;
+    }
+
+    /**
+     * get basic pop data of city
+     * @return list of data
+     */
+    public static List<PopulationReportBasic> getPopulationBasicOfCity(String cityName) {
+        List<Continent> continents = getContinents();
+        List<PopulationReportBasic> data = new ArrayList<PopulationReportBasic>();
+
+        for (Continent continent : continents) {
+            for (Region region : continent.getRegions()) {
+                for (Country country : region.getCountries()) {
+                    for (District district : country.getDistricts()) {
+                        for (City city : district.getCities()) {
+                            if (!city.getName().toLowerCase().contains(cityName.toLowerCase())) {
+                                continue;
+                            }
+
+                            data.add(new PopulationReportBasic(city.getName(), city.getPopulation()));
+                        }
+                    }
                 }
             }
         }

@@ -5,6 +5,7 @@ import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
 import com.SET08103.cw.structs.PopulationReport;
+import com.SET08103.cw.structs.PopulationReportBasic;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -262,6 +263,34 @@ public class Controller {
                 List<PopulationReport> populationCountryData = DataParser.getPopulationDataForCountries();
 
                 return DataParser.toJson(populationCountryData);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/48
+            // Population of the following: (world,continent,region,country,district,city)
+            case 26: {
+                List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfWorld();
+
+                return DataParser.toJson(populationBasicData);
+            }
+            case 27: {
+                List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfContinent(input);
+
+                return DataParser.toJson(populationBasicData);
+            }
+            case 28: {
+                List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfRegion(input);
+
+                return DataParser.toJson(populationBasicData);
+            }
+            case 29: {
+                List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfDistrict(input);
+
+                return DataParser.toJson(populationBasicData);
+            }
+            case 30: {
+                List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfCity(input);
+
+                return DataParser.toJson(populationBasicData);
             }
 
             default: {
