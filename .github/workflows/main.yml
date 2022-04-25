@@ -38,7 +38,6 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          directory: ./target/site/jacoco
           flags: IntegrationTests
           verbose: true
 
