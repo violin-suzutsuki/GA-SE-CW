@@ -243,7 +243,7 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/45
             // The population of people, people living in cities, and people not living in cities in each continent
             case 23: {
-                List<PopulationReport> populationContinentData = DataParser.getPopulationOfContinent();
+                List<PopulationReport> populationContinentData = DataParser.getPopulationDataForContinents();
 
                 return DataParser.toJson(populationContinentData);
             }
@@ -251,7 +251,7 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/46
             // The population of people, people living in cities, and people not living in cities in each region
             case 24: {
-                List<PopulationReport> populationRegionData = DataParser.getPopulationOfRegion();
+                List<PopulationReport> populationRegionData = DataParser.getPopulationDataForRegions();
 
                 return DataParser.toJson(populationRegionData);
             }
@@ -259,7 +259,7 @@ public class Controller {
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/47
             // The population of people, people living in cities, and people not living in cities in each country
             case 25: {
-                List<PopulationReport> populationCountrytData = DataParser.getPopulationOfCountry();
+                List<PopulationReport> populationCountryData = DataParser.getPopulationDataForCountries();
 
                 return DataParser.toJson(populationCountryData);
             }
