@@ -66,7 +66,7 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
 
           default:
             return (
-              <p>Nothing found</p>
+              <p></p>
             );
         }
       })()}

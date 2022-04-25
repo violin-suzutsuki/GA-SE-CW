@@ -19,7 +19,7 @@ export default function Header({ id }) {
                     if(header.id == id) {
                         return (
                             <div className='flex flex-col justify-center md:px-20 py-12 md:py-28 hero-bg md:bg-hero'>
-                                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5.5xl">
                                     <span className="block xl:inline">{header.reportName}</span>{' '}
                                     <span className="block text-indigo-600">ID - {header.id}</span>
                                     <span className="block xl:inline">Category - {header.category}</span>
