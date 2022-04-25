@@ -35,12 +35,11 @@ jobs:
           docker stop world
           docker rm world
           docker image rm database
-          mvn surefire-report:report-only
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
           flags: IntegrationTests
-          directory: ./target/site/surefire-report.html
+          directory: ./target/surefire-reports
           verbose: true
 
   build:
