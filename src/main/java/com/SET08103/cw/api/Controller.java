@@ -211,7 +211,7 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/42
-            // The top N populated capital cities in the world where N is provided by the user.
+            // The top N populated capital cities in the world where N is provided by the user
             case 20: {
                 List<City> cities = DataParser.getCapitalCitiesInWorld();
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
@@ -221,7 +221,7 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/43
-            // The top N populated capital cities in a continent where N is provided by the user.
+            // The top N populated capital cities in a continent where N is provided by the user
             case 21: {
                 List<City> cities = DataParser.getCapitalCitiesInContinent(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
@@ -231,7 +231,7 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/44
-            // The top N populated capital cities in a region where N is provided by the user.
+            // The top N populated capital cities in a region where N is provided by the user
             case 22: {
                 List<City> cities = DataParser.getCapitalCitiesInRegion(input);
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
@@ -249,7 +249,7 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/46
-            // The population of people, people living in cities, and people not living in cities in each region. #46
+            // The population of people, people living in cities, and people not living in cities in each region
             case 24: {
                 List<PopulationReport> populationRegionData = DataParser.getPopulationOfRegion();
 
@@ -257,7 +257,7 @@ public class Controller {
             }
 
             // https://github.com/violin-suzutsuki/GA-SE-CW/issues/47
-            // The population of people, people living in cities, and people not living in cities in each country. #47 
+            // The population of people, people living in cities, and people not living in cities in each country
             case 25: {
                 List<PopulationReport> populationCountrytData = DataParser.getPopulationOfCountry();
 
