@@ -248,6 +248,14 @@ public class Controller {
                 return DataParser.toJson(populationContinentData);
             }
 
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/46
+            // The population of people, people living in cities, and people not living in cities in each region. #46
+            case 24: {
+                List<PopulationReport> populationRegionData = DataParser.getPopulationDataForRegions();
+
+                return DataParser.toJson(populationRegionData);
+            }
+
             default: {
                 return "{}";
             }
