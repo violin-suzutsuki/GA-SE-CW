@@ -5,8 +5,8 @@ import headerData from '../header.json';
 function InputsBar({ setTableData, setTableTpl, setLoading }) {
   const [inputs, setInputs] = useState({id: "1", userInput1: "User Input One", userInput2: "User Input Two"}) 
   const [labels, setLabels] = useState({labelOne: "Input One", labelTwo: "Input Two"})
-  const customizableReportsOneInput = ["3", "5", "6", "12", "13", "14", "15", "16", "21", "22", "23", "25", "28"]
-  const customizableReportsTwoInputs = ["28"]
+  const customizableReportsOneInput = ["2", "3", "4", "5", "6", "8", "9", "10", "11", "12", "13", "14", "15", "16", "18", "19", "20", "21", "22"]
+  const customizableReportsTwoInputs = ["5", "6", "13", "14", "15", "16", "21", "22"]
   
   // setTableData is from the App
   const getData = (id, userInput1, userInput2) => {
@@ -54,17 +54,35 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
           <select className="mt-1 select w-full max-w-full md:max-w-xs font-medium border-2 border-indigo-500/100" required onChange={e => {setInputs(values => ({...values, id: e.target.value})); hideShowInput(e.target.value)}}>
             <option selected hidden disabled>Please select a report</option>
             <optgroup label="Country Report">
-              <option value="22">22</option>
-              <option value="28">28</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
             </optgroup>
             <optgroup label="City Report">
-              <option value="23">23</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
             </optgroup>
             <optgroup label="Capital Report">
-              <option value="24">24</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
             </optgroup>
             <optgroup label="Population Report">
-              <option value="45">45</option>
+              <option value="23">23</option>
             </optgroup>
           </select>
         </div>
