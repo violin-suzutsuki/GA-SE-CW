@@ -43,8 +43,8 @@ public class IntegrationTests
      * Conditions: Standard
      */
     @Test
-    void testReport22() {
-        String jsonRet = apiController.api(22, "", "");
+    void testReport1() {
+        String jsonRet = apiController.api(1, "", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 239);
@@ -57,8 +57,8 @@ public class IntegrationTests
      * Conditions: Invalid data provided by the user
      */
     @Test
-    void testReport23Invalid() {
-        String jsonRet = apiController.api(23, "nodata", "");
+    void testReport2Invalid() {
+        String jsonRet = apiController.api(2, "nodata", "");
 
         assertEquals(jsonRet, "[ ]");
     }
@@ -69,8 +69,8 @@ public class IntegrationTests
      * Conditions: User provided 'asia' as continent search-term
      */
     @Test
-    void testReport23Asia() {
-        String jsonRet = apiController.api(23, "asia", "");
+    void testReport2Asia() {
+        String jsonRet = apiController.api(2, "asia", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 51);
@@ -83,8 +83,8 @@ public class IntegrationTests
      * Conditions: User provided 'america' as continent search-term
      */
     @Test
-    void testReport23America() {
-        String jsonRet = apiController.api(23, "america", "");
+    void testReport2America() {
+        String jsonRet = apiController.api(2, "america", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 51);
@@ -97,8 +97,8 @@ public class IntegrationTests
      * Conditions: Invalid data provided by the user
      */
     @Test
-    void testReport24Nothing() {
-        String jsonRet = apiController.api(24, "nodata", "");
+    void testReport3Nothing() {
+        String jsonRet = apiController.api(3, "nodata", "");
 
         assertEquals(jsonRet, "[ ]");
     }
@@ -109,8 +109,8 @@ public class IntegrationTests
      * Conditions: User provided 'australia' as region search-term
      */
     @Test
-    void testReport24Australia() {
-        String jsonRet = apiController.api(24, "australia", "");
+    void testReport3Australia() {
+        String jsonRet = apiController.api(3, "australia", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 5);
