@@ -2,6 +2,7 @@
 [![LICENSE](https://img.shields.io/github/license/violin-suzutsuki/SET08103.svg)](https://github.com/violin-suzutsuki/SET08103/blob/main/LICENSE)
 [![Releases](https://img.shields.io/github/release/violin-suzutsuki/SET08103.svg)](#)
 ![Codebase Size](https://img.shields.io/github/languages/code-size/violin-suzutsuki/SET08103)
+[![codecov](https://codecov.io/gh/violin-suzutsuki/GA-SE-CW/branch/main/graph/badge.svg?token=Zah5mYcSbt)](https://codecov.io/gh/violin-suzutsuki/GA-SE-CW)
 
 #### Main Branch
 ![workflow](https://img.shields.io/github/workflow/status/violin-suzutsuki/SET08103/A%20workflow%20for%20coursework/master)<br>
