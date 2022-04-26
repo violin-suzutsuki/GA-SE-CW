@@ -460,8 +460,8 @@ public class IntegrationTests
 
         assertEquals(reports.stream().count(), 239);
         assertEquals(reports.get(0).getName(), "Aruba");
-        assertEquals(reports.get(0).getTotalPopulation(), 10300);
-        assertEquals(reports.get(0).getPopulationInCities(), "10300 (100.0%)");
+        assertEquals(reports.get(0).getTotalPopulation(), 103000);
+        assertEquals(reports.get(0).getPopulationInCities(), "103000 (100.0%)");
     }
 
     /**
