@@ -366,4 +366,17 @@ public class IntegrationTests
         assertEquals(cities.get(2).getName(), "Peking");
         assertEquals(cities.get(3).getName(), "Taipei");
     }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/42
+     * Create Report: The top N populated capital cities in the world where N is provided by the user
+     * Conditions: 5 as N
+     */
+    @Test
+    void testReport20() {
+        String jsonRet = apiController.api(20, "5 Asia", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+
+    }
 }

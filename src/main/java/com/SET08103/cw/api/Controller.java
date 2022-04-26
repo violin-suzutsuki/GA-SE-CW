@@ -236,7 +236,7 @@ public class Controller {
                 List<City> cities = DataParser.getCapitalCitiesInWorld();
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
-                int topN = Integer.parseInt(input2);
+                int topN = Integer.parseInt(input);
                 topN = Math.min(topN, (int)cities.stream().count());
 
                 return DataParser.toJson(cities.subList(0, topN));
