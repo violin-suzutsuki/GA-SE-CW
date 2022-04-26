@@ -1,0 +1,259 @@
+[
+	{
+		"id": "1",
+		"reportName": "Countries organized by population (DESC)",
+        "description": "This report wil generate an organized list of countries ordered by population ",
+		"category": "Country",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+    {
+		"id": "2",
+		"reportName": "Countries in a continent organized by population (DESC)",
+        "description": "This report wil generate an organized list of countries in a continent ordered by population",
+		"category": "Country",
+		"labelOneText": "Continent",
+		"labelTwoText": ""
+	},
+    {
+		"id": "3",
+		"reportName": "Countries in a region organized by population (DESC)",
+        "description": "This report wil generate an organized list of regions ordered by population",
+		"category": "Country",
+		"labelOneText": "Region",
+		"labelTwoText": ""
+	},
+    {
+		"id": "4",
+		"reportName": "Top N most populated countries",
+        "description": "This report wil generate an organized list of the n most populated countries",
+		"category": "Country",
+		"labelOneText": "No. of entries to return",
+		"labelTwoText": ""
+	},
+    {
+		"id": "5",
+		"reportName": "Top N most populated countries in a continent",
+        "description": "This report wil generate an organized list of the n most populated countries in a continent",
+		"category": "Country",
+		"labelOneText": "Continent",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "6",
+		"reportName": "Top N most populated countries in a region",
+        "description": "This report wil generate an organized list of the n most populated countries in a given region",
+		"category": "Country",
+		"labelOneText": "Region",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "7",
+		"reportName": "Cities organized by population (DESC)",
+        "description": "This report wil generate an organized list of cities organized by population",
+		"category": "City",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+    {
+		"id": "8",
+		"reportName": "Cities in a continent organized by population (DESC)",
+        "description": "This report wil generate an organized list of cities in a continent organized by population",
+		"category": "City",
+		"labelOneText": "Continent",
+		"labelTwoText": ""
+	},
+    {
+		"id": "9",
+		"reportName": "Cities in a region organized by population (DESC)",
+        "description": "This report wil generate an organized list of cities in a region organized by population",
+		"category": "City",
+		"labelOneText": "Region",
+		"labelTwoText": ""
+	},
+    {
+		"id": "10",
+		"reportName": "Cities in a Country organized by population (DESC)",
+        "description": "This report wil generate an organized list of cities in a country organized by population",
+		"category": "City",
+		"labelOneText": "Country",
+		"labelTwoText": ""
+	},
+    {
+		"id": "11",
+		"reportName": "Cities in a district organized by population (DESC)",
+        "description": "This report wil generate an organized list of cities in a district organized by population",
+		"category": "City",
+		"labelOneText": "District",
+		"labelTwoText": ""
+	},
+    {
+		"id": "12",
+		"reportName": "Top N populated cities",
+        "description": "This report wil generate an organized list of the n populated cities",
+		"category": "City",
+		"labelOneText": "No. of entries to return",
+		"labelTwoText": ""
+	},
+    {
+		"id": "13",
+		"reportName": "Top N populated cities in a continent",
+        "description": "This report wil generate an organized list of the n populated cities in a continent",
+		"category": "City",
+		"labelOneText": "Continent",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "14",
+		"reportName": "Top N populated cities in a region",
+        "description": "This report wil generate an organized list of the n populated cities in a region",
+		"category": "City",
+		"labelOneText": "Region",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "15",
+		"reportName": "Top N populated cities in a country",
+        "description": "This report wil generate an organized list of the n populated cities in a country",
+		"category": "City",
+		"labelOneText": "Country",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "16",
+		"reportName": "Top N populated cities in a district",
+        "description": "This report wil generate an organized list of the n populated cities in a district",
+		"category": "City",
+		"labelOneText": "District",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "17",
+		"reportName": "Capital cities organized by population (DESC)",
+        "description": "This report wil generate an organized list of capital cities organized by population",
+		"category": "Capital City",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+    {
+		"id": "18",
+		"reportName": "Capital cities in a continent organized by population (DESC)",
+        "description": "This report wil generate an organized list of capital cities in a continent organized by population",
+		"category": "Capital City",
+		"labelOneText": "Continent",
+		"labelTwoText": ""
+	},
+    {
+		"id": "19",
+		"reportName": "Capital cities in a region organized by population (DESC)",
+        "description": "This report wil generate an organized list of capital cities in a given region organized by population",
+		"category": "Capital City",
+		"labelOneText": "Region",
+		"labelTwoText": ""
+	},
+    {
+		"id": "20",
+		"reportName": "Top N populated capital cities",
+        "description": "This report wil generate an organized list of the top N populated capital cities ",
+		"category": "Capital City",
+		"labelOneText": "No. of entries to return",
+		"labelTwoText": ""
+	},
+    {
+		"id": "21",
+		"reportName": "Top N populated capital cities in a continent",
+        "description": "This report wil generate an organized list of the top N populated capital cities in a continent",
+		"category": "Capital City",
+		"labelOneText": "Continent",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "22",
+		"reportName": "Top N populated capital cities in a region",
+        "description": "This report wil generate an organized list of the top N populated capital cities in a region",
+		"category": "Capital City",
+		"labelOneText": "Region",
+		"labelTwoText": "No. of entries to return"
+	},
+    {
+		"id": "23",
+		"reportName": "No. of people living in/not in cities in each continent",
+        "description": "This report wil generate an organized list of the number of people living in/not in cities in each continent",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "24",
+		"reportName": "No. of people living in/not in cities in each region",
+        "description": "This report wil generate an organized list of the number of people living in/not in cities in each region",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "25",
+		"reportName": "No. of people living in/not in cities in each country",
+        "description": "This report wil generate an organized list of the number of people living in/not in cities in each country",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "26",
+		"reportName": "Population of the world",
+        "description": "This report wil generate the population of the world",
+		"category": "World Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "27",
+		"reportName": "Population of a continent",
+        "description": "This report wil generate the population of a given continent",
+		"category": "World Population",
+		"labelOneText": "Continent",
+		"labelTwoText": ""
+	},
+	{
+		"id": "28",
+		"reportName": "Population of a region",
+        "description": "This report wil generate the population of a given region",
+		"category": "World Population",
+		"labelOneText": "Region",
+		"labelTwoText": ""
+	},
+	{
+		"id": "29",
+		"reportName": "Population of a country.",
+        "description": "This report wil generate the population of a given country",
+		"category": "World Population",
+		"labelOneText": "Country",
+		"labelTwoText": ""
+	},
+	{
+		"id": "30",
+		"reportName": "Population of a district",
+        "description": "This report wil generate the population of a given district",
+		"category": "World Population",
+		"labelOneText": "District",
+		"labelTwoText": ""
+	},
+	{
+		"id": "31",
+		"reportName": "Population of a city",
+        "description": "This report wil generate the population of a given city",
+		"category": "World Population",
+		"labelOneText": "City",
+		"labelTwoText": ""
+	},
+	{
+		"id": "32",
+		"reportName": "Language Percentage",
+        "description": "This report will return the total number of people who speak a language and the percentage of the world population that speak it.",
+		"category": "Language",
+		"labelOneText": "",
+		"labelTwoText": ""
+	}
+    
+]
