@@ -1,6 +1,6 @@
 export default function CapitalReport({ tableData }) {
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mb-7">
             <table className="table table-zebra w-full">
                 <thead>
                     <tr>
