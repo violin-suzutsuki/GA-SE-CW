@@ -20,7 +20,7 @@
 		"reportName": "Countries in a region organized by population (DESC)",
         "description": "This report wil generate an organized list of regions ordered by population",
 		"category": "Country",
-		"labelOneText": "District",
+		"labelOneText": "Region",
 		"labelTwoText": ""
 	},
     {
@@ -203,7 +203,7 @@
 		"id": "26",
 		"reportName": "Population of the world",
         "description": "This report wil generate the population of the world",
-		"category": "Population",
+		"category": "World Population",
 		"labelOneText": "",
 		"labelTwoText": ""
 	},
@@ -211,7 +211,7 @@
 		"id": "27",
 		"reportName": "Population of a continent",
         "description": "This report wil generate the population of a given continent",
-		"category": "Population",
+		"category": "World Population",
 		"labelOneText": "Continent",
 		"labelTwoText": ""
 	},
@@ -219,7 +219,7 @@
 		"id": "28",
 		"reportName": "Population of a region",
         "description": "This report wil generate the population of a given region",
-		"category": "Population",
+		"category": "World Population",
 		"labelOneText": "Region",
 		"labelTwoText": ""
 	},
@@ -227,7 +227,7 @@
 		"id": "29",
 		"reportName": "Population of a country.",
         "description": "This report wil generate the population of a given country",
-		"category": "Population",
+		"category": "World Population",
 		"labelOneText": "Country",
 		"labelTwoText": ""
 	},
@@ -235,7 +235,7 @@
 		"id": "30",
 		"reportName": "Population of a district",
         "description": "This report wil generate the population of a given district",
-		"category": "Population",
+		"category": "World Population",
 		"labelOneText": "District",
 		"labelTwoText": ""
 	},
@@ -243,14 +243,14 @@
 		"id": "31",
 		"reportName": "Population of a city",
         "description": "This report wil generate the population of a given city",
-		"category": "Population",
+		"category": "World Population",
 		"labelOneText": "City",
 		"labelTwoText": ""
 	},
 	{
 		"id": "32",
 		"reportName": "Language Percentage",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
+        "description": "This report will return the total number of people who speak a language and the percentage of the world population that speak it.",
 		"category": "Language",
 		"labelOneText": "",
 		"labelTwoText": ""

@@ -1,4 +1,4 @@
-import headerData from '../header.json'
+import reportInfo from '../reportInfo.json'
 
 export default function Header({ id }) {
     
@@ -15,7 +15,7 @@ export default function Header({ id }) {
     } else {
         return (
             <>
-                {headerData.map(header => {
+                {reportInfo.map(header => {
                     if(header.id == id) {
                         return (
                             <div className='flex flex-col justify-center md:px-20 py-12 md:py-28 hero-bg md:bg-hero'>
