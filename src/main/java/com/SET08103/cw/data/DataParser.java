@@ -694,21 +694,10 @@ public final class DataParser {
             for (Continent continent : getContinents()) {
                 for (Region region : continent.getRegions()) {
                     for (Country country : region.getCountries()) {
-                        System.out.println("Country loop: " + country.getName());
-                        System.out.println("Country has: " + country.getLanguages().stream().count() + " languages");
-
                         for (CountryLanguage languageRecord : country.getLanguages()) {
-                            System.out.println(String.format("Comparing %s to %s, %s", languageRecord.getLanguage(), language, languageRecord.getLanguage() == language));
-
-                            if (languageRecord.getLanguage().toLowerCase().contains(language.toLowerCase())) {
-                                System.out.println("Got language: " + language);
-
-                                double num = Math.floor((double)country.getPopulation() * languageRecord.getPercentage());
-                                System.out.println("Got num: " + num + "(" + country.getPopulation() + " * " + languageRecord.getPercentage() + ")");
-
+                            if (languageRecord.getLanguage().equals(language)) {
+                                double num = Math.floor((double)country.getPopulation() * (languageRecord.getPercentage() / 100));
                                 population += (long)num;
-                                System.out.println("New pop: " + population);
-
                                 break;
                             }
                         }
