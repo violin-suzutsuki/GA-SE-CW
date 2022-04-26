@@ -700,7 +700,7 @@ public final class DataParser {
                         for (CountryLanguage languageRecord : country.getLanguages()) {
                             System.out.println(String.format("Comparing %s to %s, %s", languageRecord.getLanguage(), language, languageRecord.getLanguage() == language));
 
-                            if (languageRecord.getLanguage() == language) {
+                            if (languageRecord.getLanguage().toLowerCase().contains(language.toLowerCase())) {
                                 System.out.println("Got language: " + language);
 
                                 double num = Math.floor((double)country.getPopulation() * languageRecord.getPercentage());
