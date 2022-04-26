@@ -5,6 +5,9 @@ module.exports = {
       colors: {
         'EerieBlack': '#232526',
         'Onyx': '#414345'
+      },
+      fontSize: {
+        '5.5xl': '2.75rem'
       }
     },
     backgroundSize: {

@@ -1,27 +1,24 @@
-export default function CapitalReport({ tableData }) {
+export default function LanguageReport({ tableData }) {
     return (
-        <div className="overflow-x-auto mb-7">
+        <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>Population</th>
+                        <td>Language</td>
+                        <td>Number of speakers</td>
+                        <td>Percentage of world population</td>
                     </tr>
                 </thead>
                 <tbody>
                     {tableData.map(data => {
-                        if (data !== null) {
                         return (
                             <tr>
-                                <td>{data.name}</td>
-                                <td>{data.countryCode}</td>
+                                <td>{data.language}</td>
                                 <td>{data.population}</td>
+                                <td>{data.percentOfWorld}</td>
                             </tr>
                         )
-                        }
-                    }
-                    )}
+                    })}
                 </tbody>
             </table>
         </div>

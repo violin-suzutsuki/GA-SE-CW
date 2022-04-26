@@ -1,27 +1,22 @@
-export default function CapitalReport({ tableData }) {
+export default function WorldPopulationReport({ tableData }) {
     return (
-        <div className="overflow-x-auto mb-7">
+        <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>Population</th>
+                        <td>Name</td>
+                        <td>Population</td>
                     </tr>
                 </thead>
                 <tbody>
                     {tableData.map(data => {
-                        if (data !== null) {
                         return (
                             <tr>
                                 <td>{data.name}</td>
-                                <td>{data.countryCode}</td>
-                                <td>{data.population}</td>
+                                <td>{data.totalPopulation}</td>
                             </tr>
                         )
-                        }
-                    }
-                    )}
+                    })}
                 </tbody>
             </table>
         </div>
