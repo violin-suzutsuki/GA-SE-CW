@@ -307,6 +307,7 @@ public class Controller {
                 List<LanguageReport> reports = DataParser.getLanguageReports(new ArrayList<String>(Arrays.asList("Chinese", "English", "Hindi", "Spanish", "Arabic")));
                 reports.sort(Comparator.comparing(LanguageReport::getPopulation).reversed());
 
+                return DataParser.toJson(reports);
             }
 
             default: {
