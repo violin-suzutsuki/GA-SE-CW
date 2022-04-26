@@ -5,8 +5,6 @@ import headerData from '../header.json';
 function InputsBar({ setTableData, setTableTpl, setLoading }) {
   const [inputs, setInputs] = useState({id: "1", userInput1: "User Input One", userInput2: "User Input Two"}) 
   const [labels, setLabels] = useState({labelOne: "Input One", labelTwo: "Input Two"})
-  const customizableReportsOneInput = ["2", "3", "4", "5", "6", "8", "9", "10", "11", "12", "13", "14", "15", "16", "18", "19", "20", "21", "22", "27", "28", "29", "30", "31"]
-  const customizableReportsTwoInputs = ["5", "6", "13", "14", "15", "16", "21", "22"]
   
   // setTableData is from the App
   const getData = (id, userInput1, userInput2) => {
@@ -26,14 +24,16 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
     var input1 = document.getElementById("input1");
     var input2 = document.getElementById("input2")
 
-    input1.disabled = !customizableReportsOneInput.includes(id);
-    (customizableReportsOneInput.includes(id)) ? input1.parentElement.style.display = "block" : input1.parentElement.style.display = "none" 
-
-    input2.disabled = !customizableReportsTwoInputs.includes(id);
-    (customizableReportsTwoInputs.includes(id)) ? input2.parentElement.style.display = "block" : input2.parentElement.style.display = "none"
-
     headerData.map(data => {
       if(data.id == id) {
+        var firstInput = data.labelOneText !== "";
+        input1.disabled = !firstInput;
+        input1.parentElement.style.display = firstInput ? "block" : "none";
+
+        var secondInput = data.labelTwoText !== "";
+        input2.disabled = !secondInput;
+        input2.parentElement.style.display = secondInput ? "block" : "none";
+
         setLabels({labelOne: data.labelOneText, labelTwo: data.labelTwoText})
       }
     })
