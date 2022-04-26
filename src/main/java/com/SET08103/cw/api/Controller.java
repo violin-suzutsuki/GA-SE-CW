@@ -69,6 +69,8 @@ public class Controller {
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input);
+                topN = Math.min(topN, (int)countries.stream().count());
+
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
@@ -79,6 +81,8 @@ public class Controller {
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)countries.stream().count());
+
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
@@ -89,6 +93,8 @@ public class Controller {
                 countries.sort(Comparator.comparing(Country::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)countries.stream().count());
+
                 return DataParser.toJson(countries.subList(0, topN));
             }
 
@@ -144,6 +150,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -154,6 +162,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -164,6 +174,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -174,6 +186,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -184,6 +198,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -221,6 +237,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -231,6 +249,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
@@ -241,6 +261,8 @@ public class Controller {
                 cities.sort(Comparator.comparing(City::getPopulation).reversed());
 
                 int topN = Integer.parseInt(input2);
+                topN = Math.min(topN, (int)cities.stream().count());
+
                 return DataParser.toJson(cities.subList(0, topN));
             }
 
