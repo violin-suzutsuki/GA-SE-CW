@@ -2,7 +2,7 @@
 	{
 		"id": "1",
 		"reportName": "Countries organized by population (DESC)",
-        "description": "This is some placeholder text that will be changed to a description of the current report",
+        "description": "This report wil generate an organized list of countries ordered by population ",
 		"category": "Country",
 		"labelOneText": "",
 		"labelTwoText": ""
