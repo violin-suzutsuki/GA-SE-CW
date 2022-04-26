@@ -702,7 +702,7 @@ public final class DataParser {
                                 System.out.println("Got num: " + num + "(" + country.getPopulation() + " * " + languageRecord.getPercentage() + ")");
 
                                 population += (long)num;
-                                System.out.println("New pop: " + population)
+                                System.out.println("New pop: " + population);
 
                                 break;
                             }
