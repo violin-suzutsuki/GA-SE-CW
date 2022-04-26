@@ -269,4 +269,40 @@ public class IntegrationTests
         assertEquals(cities.get(3).getName(), "Jakarta");
         assertEquals(cities.get(4).getName(), "Karachi");
     }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/36
+     * Create Report: The top N populated cities in a region where N is provided by the user
+     * Conditions: Eastern Asia as the region, 5 as N
+     */
+    @Test
+    void testReport14() {
+        String jsonRet = apiController.api(14, "Eastern Asia", "5");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Shanghai");
+        assertEquals(cities.get(2).getName(), "Tokyo");
+        assertEquals(cities.get(3).getName(), "Peking");
+        assertEquals(cities.get(4).getName(), "Chongqing");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/37
+     * Create Report: The top N populated cities in a country where N is provided by the user
+     * Conditions: China as the country, 5 as N
+     */
+    @Test
+    void testReport15() {
+        String jsonRet = apiController.api(15, "China", "5");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Shanghai");
+        assertEquals(cities.get(1).getName(), "Peking");
+        assertEquals(cities.get(2).getName(), "Chongqing");
+        assertEquals(cities.get(3).getName(), "Tianjin");
+        assertEquals(cities.get(4).getName(), "Wuhan");
+    }
 }
