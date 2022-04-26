@@ -3,6 +3,7 @@ package com.SET08103.cw;
 import com.SET08103.cw.api.Controller;
 import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
+import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -148,14 +149,60 @@ public class IntegrationTests
     /**
      * https://github.com/violin-suzutsuki/GA-SE-CW/issues/28
      * Create Report: The top N populated countries in a region where N is provided by the user
-     * Conditions: User provided 1 as limit, Asia as the region
+     * Conditions: Eastern Asia as the region, User provided 2 as limit
      */
     @Test
     void testReport6() {
-        String jsonRet = apiController.api(6, "East Lothian", "1");
+        String jsonRet = apiController.api(6, "Eastern Asia", "2");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
-        assertEquals(countries.stream().count(), 1);
+        assertEquals(countries.stream().count(), 2);
         assertEquals(countries.get(0).getCode(), "CHN");
+        assertEquals(countries.get(1).getCode(), "JPN");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/29
+     * Create Report: All the cities in the world organised by largest population to smallest
+     * Conditions: none
+     */
+    @Test
+    void testReport7() {
+        String jsonRet = apiController.api(7, "", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 4526);
+        assertEquals(cities.get(0).getName(), "Mumbai (Bombay)");
+        assertEquals(cities.get(1).getName(), "Seoul");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/30
+     * Create Report: All the cities in a continent organised by largest population to smallest
+     * Conditions: Asia as the continent
+     */
+    @Test
+    void testReport8() {
+        String jsonRet = apiController.api(8, "Asia", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 1865);
+        assertEquals(cities.get(0).getName(), "Mumbai (Bombay)");
+        assertEquals(cities.get(1).getName(), "Seoul");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/31
+     * Create Report: All the cities in a region organised by largest population to smallest
+     * Conditions: Eastern Asia as the region
+     */
+    @Test
+    void testReport9() {
+        String jsonRet = apiController.api(9, "Eastern Asia", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 741);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Shanghai");
     }
 }
