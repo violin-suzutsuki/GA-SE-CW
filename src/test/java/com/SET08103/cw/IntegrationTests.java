@@ -134,11 +134,11 @@ public class IntegrationTests
     /**
      * https://github.com/violin-suzutsuki/GA-SE-CW/issues/26
      * Create Report: The top N populated countries in a continent where N is provided by the user
-     * Conditions: User provided 1 as limit, Asia as the continent
+     * Conditions: Asia as the continent, User provided 1 as limit
      */
     @Test
     void testReport5() {
-        String jsonRet = apiController.api(5, "1", "Asia");
+        String jsonRet = apiController.api(5, "Asia", "1");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 1);
