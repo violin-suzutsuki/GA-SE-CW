@@ -374,7 +374,7 @@ public class IntegrationTests
      */
     @Test
     void testReport20() {
-        String jsonRet = apiController.api(20, "5 Asia", "");
+        String jsonRet = apiController.api(20, "5", "");
         List<City> cities = DataParser.fromJson(jsonRet, City.class);
 
 
