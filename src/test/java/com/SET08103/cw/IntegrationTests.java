@@ -305,4 +305,65 @@ public class IntegrationTests
         assertEquals(cities.get(3).getName(), "Tianjin");
         assertEquals(cities.get(4).getName(), "Wuhan");
     }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/38
+     * Create Report: The top N populated cities in a district where N is provided by the user
+     * Conditions: Shanghai as the district, 5 as N
+     */
+    @Test
+    void testReport16() {
+        String jsonRet = apiController.api(16, "Shanghai", "5");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 1);
+        assertEquals(cities.get(0).getName(), "Shanghai");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/39
+     * Create Report: All the capital cities in the world organised by largest population to smallest
+     * Conditions: none
+     */
+    @Test
+    void testReport17() {
+        String jsonRet = apiController.api(17, "", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 232);
+        assertEquals(cities.get(0).getName(), "Seoul");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/40
+     * Create Report: All the capital cities in a continent organised by largest population to smallest
+     * Conditions: Asia as the continent
+     */
+    @Test
+    void testReport18() {
+        String jsonRet = apiController.api(18, "Asia", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 51);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Jakarta");
+        assertEquals(cities.get(2).getName(), "Tokyo");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/41
+     * Create Report: All the capital cities in a region organised by largest to smallest
+     * Conditions: Eastern Asia as the region
+     */
+    @Test
+    void testReport19() {
+        String jsonRet = apiController.api(19, "Eastern Asia", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 8);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Tokyo");
+        assertEquals(cities.get(2).getName(), "Peking");
+        assertEquals(cities.get(3).getName(), "Taipei");
+    }
 }
