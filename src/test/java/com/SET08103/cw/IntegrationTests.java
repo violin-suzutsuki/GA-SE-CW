@@ -5,7 +5,9 @@ import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
+import com.SET08103.cw.structs.LanguageReport;
 import com.SET08103.cw.structs.PopulationReport;
+import com.SET08103.cw.structs.PopulationReportBasic;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -465,12 +467,87 @@ public class IntegrationTests
     }
 
     /**
-     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/47
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/48
      * Create Report: Population of the following: (world,continent,region,country,district,city)
      * Conditions: varied
      */
     @Test
     void testReport26() {
+        String jsonRet = apiController.api(26, "", "");
+        List<PopulationReportBasic> reports = DataParser.fromJson(jsonRet, PopulationReportBasic.class);
 
+        assertEquals(reports.stream().count(), 1);
+        assertEquals(reports.get(0).getName(), "world");
+        assertEquals(reports.get(0).getTotalPopulation() + "", "6078749450");
+    }
+
+    // Continent: Asia
+    @Test
+    void testReport27() {
+        String jsonRet = apiController.api(27, "Asia", "");
+        List<PopulationReportBasic> reports = DataParser.fromJson(jsonRet, PopulationReportBasic.class);
+
+        assertEquals(reports.stream().count(), 1);
+        assertEquals(reports.get(0).getName(), "Asia");
+        assertEquals(reports.get(0).getTotalPopulation() + "", "3705025700");
+    }
+
+    // Region: Eastern Asia
+    @Test
+    void testReport28() {
+        String jsonRet = apiController.api(28, "Eastern Asia", "");
+        List<PopulationReportBasic> reports = DataParser.fromJson(jsonRet, PopulationReportBasic.class);
+
+        assertEquals(reports.stream().count(), 1);
+        assertEquals(reports.get(0).getName(), "Eastern Asia");
+        assertEquals(reports.get(0).getTotalPopulation() + "", "1507328000");
+    }
+
+    // Country: China
+    @Test
+    void testReport29() {
+        String jsonRet = apiController.api(29, "China", "");
+        List<PopulationReportBasic> reports = DataParser.fromJson(jsonRet, PopulationReportBasic.class);
+
+        assertEquals(reports.stream().count(), 1);
+        assertEquals(reports.get(0).getName(), "China");
+        assertEquals(reports.get(0).getTotalPopulation() + "", "1277558000");
+    }
+
+    // District: Shanghai
+    @Test
+    void testReport30() {
+        String jsonRet = apiController.api(30, "Shanghai", "");
+        List<PopulationReportBasic> reports = DataParser.fromJson(jsonRet, PopulationReportBasic.class);
+
+        assertEquals(reports.stream().count(), 1);
+        assertEquals(reports.get(0).getName(), "Shanghai");
+        assertEquals(reports.get(0).getTotalPopulation() + "", "9696300");
+    }
+
+    // City: Edinburgh
+    @Test
+    void testReport31() {
+        String jsonRet = apiController.api(31, "Edinburgh", "");
+        List<PopulationReportBasic> reports = DataParser.fromJson(jsonRet, PopulationReportBasic.class);
+
+        assertEquals(reports.stream().count(), 1);
+        assertEquals(reports.get(0).getName(), "Edinburgh");
+        assertEquals(reports.get(0).getTotalPopulation() + "", "450180");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/49
+     * Create Report: Provide the number of people who speak the following languages (from greatest to smallest) - Chinese,English,Hindi,Spanish, Arabic
+     * Conditions: none
+     */
+    @Test
+    void testReport32() {
+        String jsonRet = apiController.api(32, "", "");
+        List<LanguageReport> reports = DataParser.fromJson(jsonRet, LanguageReport.class);
+
+        assertEquals(reports.stream().count(), 5);
+        assertEquals(reports.get(0).getLanguage(), "Chinese");
+        assertEquals(reports.get(0).getPercentOfWorld(), "19.61%");
     }
 }
