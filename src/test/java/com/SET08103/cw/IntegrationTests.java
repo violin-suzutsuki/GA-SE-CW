@@ -150,12 +150,12 @@ public class IntegrationTests
      * Create Report: The top N populated countries in a region where N is provided by the user
      * Conditions: User provided 1 as limit, Asia as the region
      */
-    /* @Test
+    @Test
     void testReport6() {
-        String jsonRet = apiController.api(6, "1", "Asia");
+        String jsonRet = apiController.api(6, "East Lothian", "1");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 1);
         assertEquals(countries.get(0).getCode(), "CHN");
-    } */
+    }
 }
