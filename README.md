@@ -28,7 +28,7 @@
 #### App URL
 
 - local development: `http://localhost/app`
-- website: http://segeodata.duckdns.org/
+- website: `http://segeodata.duckdns.org/`
 
 #### Command List
 
