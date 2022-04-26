@@ -207,4 +207,13 @@ public class UnitTests {
 
         assertEquals(country.toString(), "testCountry (capital city: [City: testCity (1), country code: TEST, district: testDistrict, population: 10])");
     }
+
+    @Test
+    void testCountryLanguage() {
+        CountryLanguage cLanguage = new CountryLanguage("TEST", true, 1.0);
+
+        assertEquals(cLanguage.getLanguage(), "TEST");
+        assertEquals(cLanguage.getIsOfficial(), true);
+        assertEquals(cLanguage.getPercentage(), 1.0);
+    }
 }

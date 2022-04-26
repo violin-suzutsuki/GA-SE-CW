@@ -10,7 +10,7 @@ public class LanguageReport {
     private long population;
 
     /**
-     * intialize new instance of a language report
+     * Instantiate new instance of a language report
      *
      * @param language
      * @param population
@@ -21,7 +21,7 @@ public class LanguageReport {
     }
 
     /**
-     * get language of languagereport
+     * Get language of languagereport
      *
      * @return language
      */
@@ -30,7 +30,7 @@ public class LanguageReport {
     }
 
     /**
-     * get population of languagereport
+     * Get population of languagereport
      *
      * @return population
      */
@@ -39,7 +39,7 @@ public class LanguageReport {
     }
 
     /**
-     * set percent of world string
+     * Set percent of world string
      *
      * @param str
      */
@@ -48,7 +48,7 @@ public class LanguageReport {
     }
 
     /**
-     * get percent of world string
+     * Get percent of world string
      *
      * @return percent of world
      */
