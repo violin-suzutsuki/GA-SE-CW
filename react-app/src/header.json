@@ -254,6 +254,14 @@
 		"category": "Population",
 		"labelOneText": "City",
 		"labelTwoText": ""
+	},
+	{
+		"id": "32",
+		"reportName": "Language Percentage",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Language",
+		"labelOneText": "",
+		"labelTwoText": ""
 	}
     
 ]
