@@ -696,14 +696,22 @@ public final class DataParser {
                     for (Country country : region.getCountries()) {
                         for (CountryLanguage languageRecord : country.getLanguages()) {
                             if (languageRecord.getLanguage() == language) {
+                                System.out.println("Got language: " + language);
+
                                 double num = Math.floor((double)country.getPopulation() * languageRecord.getPercentage());
+                                System.out.println("Got num: " + num + "(" + country.getPopulation() + " * " + languageRecord.getPercentage() + ")");
+
                                 population += (long)num;
+                                System.out.println("New pop: " + population)
+
                                 break;
                             }
                         }
                     }
                 }
             }
+
+            System.out.println("done");
 
             float worldPopPercent = 100 * ((float) population / (float) worldPopulation);
             worldPopPercent = roundFloat(worldPopPercent, 2);
