@@ -21,6 +21,7 @@ public class Country implements Population {
     private City capital;
 
     private List<District> districts;
+    private List<CountryLanguage> languages;
 
     /**
      * Constructor for the Country class.
@@ -44,6 +45,7 @@ public class Country implements Population {
         this.population = population;
         this.capital = capital;
         this.districts = new ArrayList<District>();
+        this.languages = new ArrayList<CountryLanguage>();
     }
 
     /**
@@ -66,6 +68,7 @@ public class Country implements Population {
         this.region = region;
         this.population = population;
         this.districts = new ArrayList<District>();
+        this.languages = new ArrayList<CountryLanguage>();
     }
 
     /**
@@ -86,6 +89,24 @@ public class Country implements Population {
      */
     public List<District> getDistricts() {
         return districts;
+    }
+
+    /**
+     * Add a language to the country.
+     *
+     * @param language
+     */
+    public void addLanguage(CountryLanguage language) {
+        languages.add(language);
+    }
+
+    /**
+     * Gets the list of languages.
+     *
+     * @return list of languages
+     */
+    public List<CountryLanguage> getLanguages() {
+        return languages;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.SET08103.cw.data;
 
 import com.SET08103.cw.objects.*;
+import com.SET08103.cw.structs.LanguageReport;
 import com.SET08103.cw.structs.PopulationReport;
 import com.SET08103.cw.structs.PopulationReportBasic;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -680,5 +681,39 @@ public final class DataParser {
         }
 
         return data;
+    }
+
+    public static List<LanguageReport> getLanguageReports(List<String> languages) {
+        List<LanguageReport> reports = new ArrayList<LanguageReport>();
+
+        long worldPopulation = getPopulationBasicOfWorld().get(0).getTotalPopulation();
+
+        for (String language : languages) {
+            long population = 0;
+
+            for (Continent continent : getContinents()) {
+                for (Region region : continent.getRegions()) {
+                    for (Country country : region.getCountries()) {
+                        for (CountryLanguage languageRecord : country.getLanguages()) {
+                            if (languageRecord.getLanguage() == language) {
+                                double num = Math.floor((double)country.getPopulation() * languageRecord.getPercentage());
+                                population += (long)num;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            float worldPopPercent = 100 * ((float) population / (float) worldPopulation);
+            worldPopPercent = roundFloat(worldPopPercent, 2);
+
+            LanguageReport report = new LanguageReport(language, population);
+            report.setPercentOfWorld(String.format("%s%%", worldPopPercent));
+
+            reports.add(report);
+        }
+
+        return reports;
     }
 }

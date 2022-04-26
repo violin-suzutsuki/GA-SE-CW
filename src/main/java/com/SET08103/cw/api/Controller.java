@@ -4,12 +4,15 @@ import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
+import com.SET08103.cw.structs.LanguageReport;
 import com.SET08103.cw.structs.PopulationReport;
 import com.SET08103.cw.structs.PopulationReportBasic;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -296,6 +299,14 @@ public class Controller {
                 List<PopulationReportBasic> populationBasicData = DataParser.getPopulationBasicOfCity(input);
 
                 return DataParser.toJson(populationBasicData);
+            }
+
+            // https://github.com/violin-suzutsuki/GA-SE-CW/issues/49
+            // Provide the number of people who speak the following languages (from greatest to smallest) - Chinese,English,Hindi,Spanish, Arabic
+            case 32: {
+                List<LanguageReport> reports = DataParser.getLanguageReports(new ArrayList<String>(Arrays.asList("Chinese", "English", "Hindi", "Spanish", "Arabic")));
+                reports.sort(Comparator.comparing(LanguageReport::getPopulation).reversed());
+
             }
 
             default: {
