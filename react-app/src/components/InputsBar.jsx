@@ -94,6 +94,9 @@ function InputsBar({ setTableData, setTableTpl, setLoading }) {
               <option value="30">30</option>
               <option value="31">31</option>
             </optgroup>
+            <optgroup label="Language Reports">
+              <option value="32">32</option>
+            </optgroup>
           </select>
         </div>
         

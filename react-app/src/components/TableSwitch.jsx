@@ -5,6 +5,7 @@ import PopulationReportContinent from "./PopulationReportContinent";
 import PopulationReportCountry from "./PopulationReportCountry";
 import PopulationReportRegion from "./PopulationReportRegion";
 import WorldPopulationReport from "./WorldPopulationReport";
+import LanguageReport from "./LanguageReport";
 
 export default function TableSwitch({ tableData, tableTpl, isLoading }) {
 
@@ -73,6 +74,10 @@ export default function TableSwitch({ tableData, tableTpl, isLoading }) {
           case '31':
             return (
               <WorldPopulationReport tableData={tableData}/>
+            );
+          case '32': 
+            return (
+              <LanguageReport tableData={tableData}/>
             )
 
           default:
