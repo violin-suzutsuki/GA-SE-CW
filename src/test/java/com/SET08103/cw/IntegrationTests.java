@@ -5,6 +5,7 @@ import com.SET08103.cw.data.DataHandler;
 import com.SET08103.cw.data.DataParser;
 import com.SET08103.cw.objects.City;
 import com.SET08103.cw.objects.Country;
+import com.SET08103.cw.structs.PopulationReport;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -377,6 +378,99 @@ public class IntegrationTests
         String jsonRet = apiController.api(20, "5", "");
         List<City> cities = DataParser.fromJson(jsonRet, City.class);
 
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Jakarta");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/43
+     * Create Report: The top N populated capital cities in a continent where N is provided by the user
+     * Conditions: Asia as the continent, 5 as N
+     */
+    @Test
+    void testReport21() {
+        String jsonRet = apiController.api(21, "Asia", "5");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Jakarta");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/44
+     * Create Report: The top N populated capital cities in a region where N is provided by the user
+     * Conditions: Eastern Asia as the region, 5 as N
+     */
+    @Test
+    void testReport22() {
+        String jsonRet = apiController.api(22, "Eastern Asia", "5");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Seoul");
+        assertEquals(cities.get(1).getName(), "Tokyo");
+        assertEquals(cities.get(2).getName(), "Peking");
+        assertEquals(cities.get(3).getName(), "Taipei");
+        assertEquals(cities.get(4).getName(), "Pyongyang");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/45
+     * Create Report: The population of people, people living in cities, and people not living in cities in each continent
+     * Conditions: none
+     */
+    @Test
+    void testReport23() {
+        String jsonRet = apiController.api(23, "", "");
+        List<PopulationReport> reports = DataParser.fromJson(jsonRet, PopulationReport.class);
+
+        assertEquals(reports.stream().count(), 7);
+        assertEquals(reports.get(0).getName(), "North America");
+        assertEquals(reports.get(0).getTotalPopulation(), 482993000);
+        assertEquals(reports.get(0).getPopulationInCities(), "482993000 (100.0%)");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/46
+     * Create Report: The population of people, people living in cities, and people not living in cities in each region
+     * Conditions: none
+     */
+    @Test
+    void testReport24() {
+        String jsonRet = apiController.api(24, "", "");
+        List<PopulationReport> reports = DataParser.fromJson(jsonRet, PopulationReport.class);
+
+        assertEquals(reports.stream().count(), 25);
+        assertEquals(reports.get(0).getName(), "Caribbean");
+        assertEquals(reports.get(0).getTotalPopulation(), 38140000);
+        assertEquals(reports.get(0).getPopulationInCities(), "38140000 (100.0%)");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/47
+     * Create Report: The population of people, people living in cities, and people not living in cities in each country
+     * Conditions: none
+     */
+    @Test
+    void testReport25() {
+        String jsonRet = apiController.api(25, "", "");
+        List<PopulationReport> reports = DataParser.fromJson(jsonRet, PopulationReport.class);
+
+        assertEquals(reports.stream().count(), 239);
+        assertEquals(reports.get(0).getName(), "Aruba");
+        assertEquals(reports.get(0).getTotalPopulation(), 10300);
+        assertEquals(reports.get(0).getPopulationInCities(), "10300 (100.0%)");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/47
+     * Create Report: Population of the following: (world,continent,region,country,district,city)
+     * Conditions: varied
+     */
+    @Test
+    void testReport26() {
 
     }
 }
