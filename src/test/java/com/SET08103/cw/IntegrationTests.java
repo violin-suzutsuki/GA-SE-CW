@@ -74,7 +74,7 @@ public class IntegrationTests
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 51);
-        assertEquals(countries.get(0).toString(), "China (capital city: [City: Peking (1891), country code: CHN, district: Peking, population: 7472000])");
+        assertEquals(countries.get(0).getCode(), "CHN");
     }
 
     /**
@@ -87,8 +87,8 @@ public class IntegrationTests
         String jsonRet = apiController.api(2, "america", "");
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
-        assertEquals(countries.stream().count(), 51);
-        assertEquals(countries.get(0).toString(), "United States (capital city: [City: Washington (3813), country code: USA, district: District of Columbia, population: 572059])");
+        assertEquals(countries.stream().count(), 51);assertEquals(countries.get(0).toString(), "United States (capital city: [City: Washington (3813), country code: USA, district: District of Columbia, population: 572059])");
+        assertEquals(countries.get(0).getCode(), "USA");
     }
 
     /**
@@ -114,6 +114,48 @@ public class IntegrationTests
         List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
 
         assertEquals(countries.stream().count(), 5);
-        assertEquals(countries.get(0).toString(), "Australia (capital city: [City: Canberra (135), country code: AUS, district: Capital Region, population: 322723])");
+        assertEquals(countries.get(0).getCode(), "AUS");
     }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/25
+     * Create Report: The top N populated countries in the world where N is provided by the user
+     * Conditions: User provided 1 as limit
+     */
+    @Test
+    void testReport4() {
+        String jsonRet = apiController.api(4, "1", "");
+        List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
+
+        assertEquals(countries.stream().count(), 1);
+        assertEquals(countries.get(0).getCode(), "CHN");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/26
+     * Create Report: The top N populated countries in a continent where N is provided by the user
+     * Conditions: Asia as the continent, User provided 1 as limit
+     */
+    @Test
+    void testReport5() {
+        String jsonRet = apiController.api(5, "Asia", "1");
+        List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
+
+        assertEquals(countries.stream().count(), 1);
+        assertEquals(countries.get(0).getCode(), "CHN");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/28
+     * Create Report: The top N populated countries in a region where N is provided by the user
+     * Conditions: User provided 1 as limit, Asia as the region
+     */
+    /* @Test
+    void testReport6() {
+        String jsonRet = apiController.api(6, "1", "Asia");
+        List<Country> countries = DataParser.fromJson(jsonRet, Country.class);
+
+        assertEquals(countries.stream().count(), 1);
+        assertEquals(countries.get(0).getCode(), "CHN");
+    } */
 }
