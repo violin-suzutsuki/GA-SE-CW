@@ -52,7 +52,7 @@ public final class DataHandler {
 
         for (int idx = 0; idx < retryNumber; idx++) {
             try {
-                Thread.sleep(2500);
+                Thread.sleep(4500);
                 connection = DriverManager.getConnection(String.format(CONNECTION_STRING, host), USER, PASSWORD);
             }
             catch (SQLException | InterruptedException e) {
@@ -109,6 +109,27 @@ public final class DataHandler {
     }
 
     /**
+     * Loads language list for a given country.
+     *
+     * @param country
+     */
+    private void loadLanguagesForCountry(Country country) {
+        try {
+            PreparedStatement query = connection.prepareStatement("SELECT * FROM countrylanguage WHERE CountryCode = ?");
+            query.setString(1, country.getCode());
+
+            ResultSet results = query.executeQuery();
+
+            while (results.next()) {
+                country.addLanguage(new CountryLanguage(results.getString("Language"), results.getString("IsOfficial") == "T", results.getDouble("Percentage")));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Converts the results of an SQL query to an SQL object.
      *
      * @param results ResultSet from SQL query
@@ -124,6 +145,8 @@ public final class DataHandler {
                     results.getLong("Population"),
                     getCityFromId(results.getInt("Capital"))
             );
+
+            loadLanguagesForCountry(country);
 
             return country;
         }
