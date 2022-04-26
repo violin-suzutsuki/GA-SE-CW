@@ -705,8 +705,6 @@ public final class DataParser {
                 }
             }
 
-            System.out.println("done");
-
             float worldPopPercent = 100 * ((float) population / (float) worldPopulation);
             worldPopPercent = roundFloat(worldPopPercent, 2);
 
