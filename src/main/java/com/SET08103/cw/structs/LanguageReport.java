@@ -1,5 +1,7 @@
 package com.SET08103.cw.structs;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * LanguageReport.java
  *
@@ -15,7 +17,7 @@ public class LanguageReport {
      * @param language
      * @param population
      */
-    public LanguageReport(String language, long population) {
+    public LanguageReport(@JsonProperty("language") String language, @JsonProperty("population") long population) {
         this.language = language;
         this.population = population;
     }

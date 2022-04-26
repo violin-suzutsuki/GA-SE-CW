@@ -1,5 +1,7 @@
 package com.SET08103.cw.structs;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * PopulationReportBasic.java
  *
@@ -15,7 +17,7 @@ public class PopulationReportBasic {
      * @param name
      * @param totalPopulation
      */
-    public PopulationReportBasic(String name, long totalPopulation) {
+    public PopulationReportBasic(@JsonProperty("name") String name, @JsonProperty("totalPopulation") long totalPopulation) {
         this.name = name;
         this.totalPopulation = totalPopulation;
     }
