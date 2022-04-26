@@ -44,7 +44,7 @@
 		"reportName": "Top N most populated countries in a region",
         "description": "This report wil generate an organized list of the n most populated countries in a given region",
 		"category": "Country",
-		"labelOneText": "District",
+		"labelOneText": "Region",
 		"labelTwoText": "No. of entries to return"
 	},
     {
