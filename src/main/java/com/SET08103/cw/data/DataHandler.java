@@ -158,33 +158,6 @@ public final class DataHandler {
     }
 
     /**
-     * Gets a list of all countries in the world.
-     *
-     * @return List containing all countries in the world.
-     */
-    private List<Country> getAllCountries() {
-        List<Country> countries = new ArrayList<Country>();
-
-        try {
-            PreparedStatement query = connection.prepareStatement("SELECT * FROM country");
-            ResultSet results = query.executeQuery();
-
-            while (results.next()) {
-                Country country = loadCountryFromResult(results);
-
-                if (country != null) {
-                    countries.add(country);
-                }
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return countries;
-    }
-
-    /**
      * Get a list of cities in a district.
      *
      * @param district district to search for
