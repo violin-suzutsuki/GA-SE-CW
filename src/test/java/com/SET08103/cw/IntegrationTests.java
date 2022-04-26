@@ -205,4 +205,68 @@ public class IntegrationTests
         assertEquals(cities.get(0).getName(), "Seoul");
         assertEquals(cities.get(1).getName(), "Shanghai");
     }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/32
+     * Create Report: All the cities in a country organised by largest population to smallest
+     * Conditions: China as the country
+     */
+    @Test
+    void testReport10() {
+        String jsonRet = apiController.api(10, "China", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 363);
+        assertEquals(cities.get(0).getName(), "Shanghai");
+        assertEquals(cities.get(1).getName(), "Peking");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/33
+     * Create Report: All the cities in a district organised by largest population to smallest
+     * Conditions: Shanghai as the district
+     */
+    @Test
+    void testReport11() {
+        String jsonRet = apiController.api(11, "Shanghai", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 1);
+        assertEquals(cities.get(0).getName(), "Shanghai");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/34
+     * Create Report: The top N populated cities in the world where N is provided by the user
+     * Conditions: 5 as N
+     */
+    @Test
+    void testReport12() {
+        String jsonRet = apiController.api(12, "5", "");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Mumbai (Bombay)");
+        assertEquals(cities.get(1).getName(), "Seoul");
+        assertEquals(cities.get(3).getName(), "Shanghai");
+        assertEquals(cities.get(4).getName(), "Jakarta");
+    }
+
+    /**
+     * https://github.com/violin-suzutsuki/GA-SE-CW/issues/35
+     * Create Report: The top N populated cities in a continent where N is provided by the user
+     * Conditions: Asia as the continent, 5 as N
+     */
+    @Test
+    void testReport13() {
+        String jsonRet = apiController.api(13, "Asia", "5");
+        List<City> cities = DataParser.fromJson(jsonRet, City.class);
+
+        assertEquals(cities.stream().count(), 5);
+        assertEquals(cities.get(0).getName(), "Mumbai (Bombay)");
+        assertEquals(cities.get(1).getName(), "Seoul");
+        assertEquals(cities.get(2).getName(), "Shanghai");
+        assertEquals(cities.get(3).getName(), "Jakarta");
+        assertEquals(cities.get(4).getName(), "Karachi");
+    }
 }
