@@ -694,7 +694,12 @@ public final class DataParser {
             for (Continent continent : getContinents()) {
                 for (Region region : continent.getRegions()) {
                     for (Country country : region.getCountries()) {
+                        System.out.println("Country loop: " + country.getName());
+                        System.out.println("Country has: " + country.getLanguages().stream().count() + " languages");
+
                         for (CountryLanguage languageRecord : country.getLanguages()) {
+                            System.out.println(String.format("Comparing %s to %s, %s", languageRecord.getLanguage(), language, languageRecord.getLanguage() == language));
+
                             if (languageRecord.getLanguage() == language) {
                                 System.out.println("Got language: " + language);
 
