@@ -198,6 +198,62 @@
 		"category": "Population",
 		"labelOneText": "",
 		"labelTwoText": ""
+	},
+	{
+		"id": "25",
+		"reportName": "No. of people living in/not in cities in each country",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "26",
+		"reportName": "Population of the world",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "",
+		"labelTwoText": ""
+	},
+	{
+		"id": "27",
+		"reportName": "Population of a continent",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "Continent",
+		"labelTwoText": ""
+	},
+	{
+		"id": "28",
+		"reportName": "Population of a region",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "Region",
+		"labelTwoText": ""
+	},
+	{
+		"id": "29",
+		"reportName": "Population of a country.",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "Country",
+		"labelTwoText": ""
+	},
+	{
+		"id": "30",
+		"reportName": "Population of a district",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "District",
+		"labelTwoText": ""
+	},
+	{
+		"id": "31",
+		"reportName": "Population of a city",
+        "description": "This is some placeholder text that will be changed to a description of the current report",
+		"category": "Population",
+		"labelOneText": "City",
+		"labelTwoText": ""
 	}
     
 ]
